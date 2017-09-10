@@ -1,6 +1,6 @@
 # Laravel Blade Minify
 
-### Simple package to minify HTML on demand and reduces more than 35% file size.
+### Simple package to minify HTML output on demand which results on a 35%+ optimization.
 
 ## Instalation is easy
 
