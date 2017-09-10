@@ -7,7 +7,7 @@
 
 ### Simple package to minify HTML output on demand which results on a 35%+ optimization.
 
-## Instalation is easy
+## Installation is easy
 
 You can install the package via composer:
 
@@ -36,6 +36,6 @@ protected $middleware = [
 ![After of Laravel Blade Minify](https://i.imgur.com/IKWKLkL.png)
 
 
-License
+## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
