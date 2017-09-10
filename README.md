@@ -1,5 +1,11 @@
 # Laravel Blade Minify
 
+[![Laravel 5.2](https://img.shields.io/badge/Laravel-5.2-brightgreen.svg?style=flat-square)](http://laravel.com)
+[![Laravel 5.3](https://img.shields.io/badge/Laravel-5.3-brightgreen.svg?style=flat-square)](http://laravel.com)
+[![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
+[![Laravel 5.5](https://img.shields.io/badge/Laravel-5.5-brightgreen.svg?style=flat-square)](http://laravel.com)
+[![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-blade-minify/downloads)](https://packagist.org/packages/renatomarinho/laravel-blade-minify)
+
 ### Simple package to minify HTML output on demand which results on a 35%+ optimization.
 
 ## Instalation is easy
