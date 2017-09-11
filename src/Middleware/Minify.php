@@ -17,9 +17,6 @@ class Minify
     public function handle($request, Closure $next)
     {
         $response = $next($request);
-
-        dd(Config::get('laravel-blade-minify'));
-
         //ini_set('zlib.output_compression', 'On');
 
         return $this->html($response);
