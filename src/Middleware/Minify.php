@@ -2,7 +2,7 @@
 
 namespace RenatoMarinho\LaravelBladeMinify\Middleware;
 
-use Closure;
+use Closure, Config;
 
 class Minify
 {
@@ -18,6 +18,8 @@ class Minify
     {
         $response = $next($request);
 
+        dd(Config::get('laravel-blade-minify'));
+
         //ini_set('zlib.output_compression', 'On');
 
         return $this->html($response);
@@ -27,7 +29,7 @@ class Minify
     {
         $buffer = $response->getContent();
 
-        $replace = array(
+        $replace = [
             '/<!--[^\[](.*?)[^\]]-->/s' => '',
             "/<\?php/" => '<?php ',
             "/\n([\S])/" => '$1',
@@ -35,18 +37,18 @@ class Minify
             "/\n/" => '',
             "/\t/" => '',
             "/ +/" => ' ',
-        );
+            "/> +</" => '><',
+        ];
 
-        if(strpos($buffer,'<pre>') !== false)
-        {
-            $replace = array(
+        if(strpos($buffer,'<pre>') !== false) {
+            $replace = [
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/" => '<?php ',
                 "/\r/" => '',
                 "/>\n</" => '><',
                 "/>\s+\n</" => '><',
                 "/>\n\s+</" => '><',
-            );
+            ];
         }
 
         $buffer = preg_replace(array_keys($replace), array_values($replace), $buffer);
