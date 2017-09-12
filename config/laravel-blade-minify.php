@@ -12,7 +12,7 @@ return [
 
     'remove' => [
         'comment' => true,
-        'breakline' => true
-    ],
-
+        'breakline' => true,
+        'whitespaces' => true,
+    ]
 ];
