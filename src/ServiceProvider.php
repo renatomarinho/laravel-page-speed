@@ -1,6 +1,6 @@
 <?php
 
-namespace RenatoMarinho\LaravelBladeMinify;
+namespace RenatoMarinho\LaravelPageSpeed;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -19,7 +19,7 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/laravel-blade-minify.php' => config_path('laravel-blade-minify.php'),
+            __DIR__.'/../config/laravel-page-speed.php' => config_path('laravel-page-speed.php'),
         ]);
     }
 
@@ -28,6 +28,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/laravel-blade-minify.php', 'laravel-blade-minify.php');
+        $this->mergeConfigFrom(__DIR__.'/../config/laravel-page-speed.php', 'laravel-page-speed.php');
     }
 }

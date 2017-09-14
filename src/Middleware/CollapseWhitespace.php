@@ -1,10 +1,10 @@
 <?php
 
-namespace RenatoMarinho\LaravelBladeMinify\Middleware;
+namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure, Config;
 
-class Minify
+class CollapseWhitespace
 {
     /**
      * Handle an incoming request.

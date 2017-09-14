@@ -1,9 +1,9 @@
-# Laravel Blade Minify
+# Laravel Page Speed
 
 [![Laravel 5.3](https://img.shields.io/badge/Laravel-5.3-brightgreen.svg?style=flat-square)](http://laravel.com)
 [![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
 [![Laravel 5.5](https://img.shields.io/badge/Laravel-5.5-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-blade-minify/downloads)](https://packagist.org/packages/renatomarinho/laravel-blade-minify)
+[![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-page-speed/downloads)](https://packagist.org/packages/renatomarinho/laravel-page-speed)
 
 ### Simple package to minify HTML output on demand which results on a 35%+ optimization.
 
@@ -12,35 +12,35 @@
 You can install the package via composer:
 
 ```bash
-$ composer require renatomarinho/laravel-blade-minify
+$ composer require renatomarinho/laravel-page-speed
 ```
 
-Next, the \RenatoMarinho\LaravelBladeMinify\Middleware\Minify::class - middleware must be registered in the kernel:
+Next, the \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class - middleware must be registered in the kernel:
 
 ```php
 //app/Http/Kernel.php
 
 protected $middleware = [
     ...
-    \RenatoMarinho\LaravelBladeMinify\Middleware\Minify::class
+    \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class
 ]
 ```
 
 #### Before
 
-![Before of Laravel Blade Minify](https://i.imgur.com/cN3MWYh.png)
+![Before of Laravel Page Speed](https://i.imgur.com/cN3MWYh.png)
 
 #### After
 
-![After of Laravel Blade Minify](https://i.imgur.com/IKWKLkL.png)
+![After of Laravel Page Speed](https://i.imgur.com/IKWKLkL.png)
 
 ## Roadmap : Filters
 
 <table>
     <tr>
-        <td>Name</td>
-        <td>Description</td>
-        <td>Available</td>
+        <td><strong>Name</strong></td>
+        <td><strong>Description</strong></td>
+        <td><strong>Available</strong></td>
     <tr>
     <tr>
         <td>collapse_whitespace</td>

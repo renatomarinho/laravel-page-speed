@@ -1,10 +1,11 @@
 {
-  "name": "renatomarinho/laravel-blade-minify",
-  "description": "Laravel Blade Minify HTML",
+  "name": "renatomarinho/laravel-page-speed",
+  "description": "Laravel Page Speed",
   "keywords": [
     "laravel",
-    "blade",
+    "page speed",
     "minify",
+    "optmize",
     "html"
   ],
   "license": "MIT",
@@ -20,12 +21,12 @@
   },
   "autoload": {
     "psr-4": {
-      "RenatoMarinho\\LaravelBladeMinify\\": "src/"
+      "RenatoMarinho\\LaravelPageSpeed\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "RenatoMarinho\\LaravelBladeMinify\\Test\\": "tests"
+      "RenatoMarinho\\LaravelPageSpeed\\Test\\": "tests"
     }
   },
   "require-dev": {

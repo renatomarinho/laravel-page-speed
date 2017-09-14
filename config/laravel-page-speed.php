@@ -4,15 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel Blade Minify HTML
+    | Laravel Page Speed
     |--------------------------------------------------------------------------    |
     */
 
     'zlib' => false, // Needs enable zlib module: http://php.net/manual/en/zlib.configuration.php
 
-    'remove' => [
-        'comment' => true,
-        'breakline' => true,
-        'whitespaces' => true,
+    'filters' => [
+        'collapse_whitespace' => true,
+
     ]
 ];
