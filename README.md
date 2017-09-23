@@ -45,6 +45,11 @@ protected $middleware = [
         <td><strong>Available</strong></td>
     <tr>
     <tr>
+        <td>remove_quotes</td>
+        <td>Removes unnecessary quotes in HTML tags</td>
+        <td>YES</td>
+    <tr>
+    <tr>
         <td>trim_urls</td>
         <td>Removes unnecessary prefixes from URLs</td>
         <td>YES</td>
@@ -192,11 +197,6 @@ protected $middleware = [
     <tr>
         <td>prioritize_critical_css</td>
         <td>Instruments the page, inlines its critical CSS at the top, and lazily loads the rest</td>
-        <td>NO</td>
-    <tr>
-    <tr>
-        <td>remove_quotes</td>
-        <td>Removes unnecessary quotes in HTML tags</td>
         <td>NO</td>
     <tr>
     <tr>

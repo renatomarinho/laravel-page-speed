@@ -5,7 +5,7 @@ namespace RenatoMarinho\LaravelPageSpeed\Test\Middleware;
 use RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
 
-class CollapseWhitespaceTest extends TestCase
+class RemoveCommentsTest extends TestCase
 {
     public $middleware;
 

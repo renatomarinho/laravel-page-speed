@@ -2,20 +2,23 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
-use Closure;
-
-class RemoveQuotes
+class RemoveQuotes extends PageSpeed
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
-     * @return mixed
-     */
-
-    public function handle($request, Closure $next)
+    public function apply($buffer)
     {
-    }
+        $replace = [
+            '/src="(.*?)"/' => 'src=$1',
+            '/width="(.*?)"/' => 'width=$1',
+            '/height="(.*?)"/' => 'height=$1',
+            '/name="(.*?)"/' => 'name=$1',
+            '/charset="(.*?)"/' => 'charset=$1',
+            '/href="(.*?)"/' => 'href=$1',
+            '/align="(.*?)"/' => 'align=$1',
+            '/border="(.*?)"/' => 'border=$1',
+            '/crossorigin="(.*?)"/' => 'crossorigin=$1',
+            '/rel="(.*?)"/' => 'rel=$1',
+        ];
 
+        return $this->replace($replace, $buffer);
+    }
 }
