@@ -25,6 +25,7 @@ protected $middleware = [
     \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
+    \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
 ]
 ```
 
