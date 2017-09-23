@@ -5,7 +5,7 @@ namespace RenatoMarinho\LaravelPageSpeed\Test;
 use RenatoMarinho\LaravelPageSpeed\ServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
-class TestCase extends Orchestra
+abstract class TestCase extends Orchestra
 {
     protected $html;
     protected $middleware;
