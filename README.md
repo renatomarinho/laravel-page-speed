@@ -15,14 +15,16 @@ You can install the package via composer:
 $ composer require renatomarinho/laravel-page-speed
 ```
 
-Next, the \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class - middleware must be registered in the kernel:
+Next, the \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class and others - middleware must be registered in the kernel:
 
 ```php
 //app/Http/Kernel.php
 
 protected $middleware = [
     ...
-    \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class
+    \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
+    \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+    \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
 ]
 ```
 
@@ -37,6 +39,11 @@ protected $middleware = [
 ## Roadmap : Filters
 
 <table>
+    <tr>
+        <td>trim_urls</td>
+        <td>Removes unnecessary prefixes from URLs</td>
+        <td>YES</td>
+    <tr>
     <tr>
         <td><strong>Name</strong></td>
         <td><strong>Description</strong></td>
@@ -237,11 +244,7 @@ protected $middleware = [
         <td>Sprites images</td>
         <td>NO</td>
     <tr>
-    <tr>
-        <td>trim_urls</td>
-        <td>Removes unnecessary prefixes from URLs</td>
-        <td>NO</td>
-    <tr>
+    
 </table>
 
 <hr />

@@ -9,6 +9,7 @@ return [
     */
 
     'zlib' => false, // Needs enable zlib module: http://php.net/manual/en/zlib.configuration.php
+    //ini_set('zlib.output_compression', 'On');
 
     'filters' => [
         'collapse_whitespace' => true,
