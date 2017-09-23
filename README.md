@@ -40,14 +40,14 @@ protected $middleware = [
 
 <table>
     <tr>
-        <td>trim_urls</td>
-        <td>Removes unnecessary prefixes from URLs</td>
-        <td>YES</td>
-    <tr>
-    <tr>
         <td><strong>Name</strong></td>
         <td><strong>Description</strong></td>
         <td><strong>Available</strong></td>
+    <tr>
+    <tr>
+        <td>trim_urls</td>
+        <td>Removes unnecessary prefixes from URLs</td>
+        <td>YES</td>
     <tr>
     <tr>
         <td>collapse_whitespace</td>
