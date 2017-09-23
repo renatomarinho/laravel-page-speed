@@ -7,9 +7,7 @@ use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
 
 class RemoveQuotesTest extends TestCase
 {
-    public $middleware;
-
-    public function getMiddleware()
+    protected function getMiddleware()
     {
         $this->middleware = new RemoveQuotes();
     }

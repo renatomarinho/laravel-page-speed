@@ -8,6 +8,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 class TestCase extends Orchestra
 {
     protected $html;
+    protected $middleware;
 
     public function setUp()
     {
