@@ -28,6 +28,7 @@ Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class`
 
 protected $middleware = [
     ...
+    \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
@@ -51,6 +52,11 @@ protected $middleware = [
         <td><strong>Name</strong></td>
         <td><strong>Description</strong></td>
         <td><strong>Available</strong></td>
+    <tr>
+    <tr>
+        <td>elide_attributes</td>
+        <td>Removes unnecessary attributes in HTML tags</td>
+        <td>YES</td>
     <tr>
     <tr>
         <td>insert_dns_prefetch</td>
@@ -100,11 +106,6 @@ protected $middleware = [
     <tr>
         <td>defer_javascript</td>
         <td>Defers the execution of javascript in the HTML</td>
-        <td>NO</td>
-    <tr>
-    <tr>
-        <td>elide_attributes</td>
-        <td>Removes unnecessary attributes in HTML tags</td>
         <td>NO</td>
     <tr>
     <tr>
