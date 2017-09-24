@@ -1,9 +1,9 @@
 # Laravel Page Speed
 
-[![Laravel 5.3](https://img.shields.io/badge/Laravel-5.3-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Laravel 5.5](https://img.shields.io/badge/Laravel-5.5-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Total Downloads](https://poser.pugx.org/renatomarinho/laravel-page-speed/downloads)](https://packagist.org/packages/renatomarinho/laravel-page-speed)
+[![Laravel 5.3][icon-l53]][link-laravel]
+[![Laravel 5.4][icon-l54]][link-laravel]
+[![Laravel 5.5][icon-l55]][link-laravel]
+[![Total Downloads][icon-downloads]][link-downloads]
 
 ### Simple package to minify HTML output on demand which results on a 35%+ optimization.
 
@@ -15,7 +15,12 @@ You can install the package via composer:
 $ composer require renatomarinho/laravel-page-speed
 ```
 
-Next, the \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class and others - middleware must be registered in the kernel:
+ Add the Service Provider to your **config/app.php**: `RenatoMarinho\LaravelPageSpeed\ServiceProvider::class` 
+ 
+ *This is required for publishing the configuration file:* 
+ `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
+
+Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and others - middleware must be registered in the kernel:
 
 ```php
 //app/Http/Kernel.php
@@ -31,11 +36,11 @@ protected $middleware = [
 
 #### Before
 
-![Before of Laravel Page Speed](https://i.imgur.com/cN3MWYh.png)
+![Before of Laravel Page Speed][link-before]
 
 #### After
 
-![After of Laravel Page Speed](https://i.imgur.com/IKWKLkL.png)
+![After of Laravel Page Speed][link-after]
 
 ## Roadmap : Filters
 
@@ -250,6 +255,17 @@ protected $middleware = [
 
 <hr />
 
+## Testing
+
+``` bash
+$ composer test
+```
+
+## Credits
+
+- [Renato Marinho][link-author]
+- [All Contributors][link-contributors]
+
 ## Inspiration 
 
 #### Mod Page Speed (https://www.modpagespeed.com/)
@@ -257,3 +273,15 @@ protected $middleware = [
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[icon-l53]: https://img.shields.io/badge/Laravel-5.3-brightgreen.svg?style=flat-square
+[icon-l54]: https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square
+[icon-l55]: https://img.shields.io/badge/Laravel-5.5-brightgreen.svg?style=flat-square
+[icon-downloads]: https://poser.pugx.org/renatomarinho/laravel-page-speed/downloads
+
+[link-laravel]: https://laravel.com
+[link-downloads]: https://packagist.org/packages/renatomarinho/laravel-page-speed
+[link-before]: https://i.imgur.com/cN3MWYh.png
+[link-after]: https://i.imgur.com/IKWKLkL.png
+[link-author]: https://github.com/renatomarinho
+[link-contributors]: ../../contributors
