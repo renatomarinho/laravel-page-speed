@@ -17,5 +17,4 @@ class RewriteStyleAttributes
     public function handle($request, Closure $next)
     {
     }
-
 }

@@ -17,5 +17,4 @@ class LazyLoadImages
     public function handle($request, Closure $next)
     {
     }
-
 }

@@ -17,5 +17,4 @@ class RewriteCss
     public function handle($request, Closure $next)
     {
     }
-
 }

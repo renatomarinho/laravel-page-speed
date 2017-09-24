@@ -17,5 +17,4 @@ class OutlineJavascript
     public function handle($request, Closure $next)
     {
     }
-
 }

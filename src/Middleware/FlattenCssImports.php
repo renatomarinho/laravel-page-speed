@@ -17,5 +17,4 @@ class FlattenCssImports
     public function handle($request, Closure $next)
     {
     }
-
 }

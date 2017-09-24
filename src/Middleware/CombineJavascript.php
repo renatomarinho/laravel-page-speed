@@ -17,5 +17,4 @@ class CombineJavascript
     public function handle($request, Closure $next)
     {
     }
-
 }

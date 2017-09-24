@@ -17,5 +17,4 @@ class MakeShowAdsAsync
     public function handle($request, Closure $next)
     {
     }
-
 }

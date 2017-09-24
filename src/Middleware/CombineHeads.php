@@ -17,5 +17,4 @@ class CombineHeads
     public function handle($request, Closure $next)
     {
     }
-
 }

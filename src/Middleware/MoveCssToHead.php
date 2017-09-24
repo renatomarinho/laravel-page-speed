@@ -17,5 +17,4 @@ class MoveCssToHead
     public function handle($request, Closure $next)
     {
     }
-
 }

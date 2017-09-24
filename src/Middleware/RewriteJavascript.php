@@ -17,5 +17,4 @@ class RewriteJavascript
     public function handle($request, Closure $next)
     {
     }
-
 }

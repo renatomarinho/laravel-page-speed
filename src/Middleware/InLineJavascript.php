@@ -17,5 +17,4 @@ class InLineJavascript
     public function handle($request, Closure $next)
     {
     }
-
 }

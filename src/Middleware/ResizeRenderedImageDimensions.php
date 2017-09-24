@@ -17,5 +17,4 @@ class ResizeRenderedImageDimensions
     public function handle($request, Closure $next)
     {
     }
-
 }

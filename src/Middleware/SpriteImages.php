@@ -17,5 +17,4 @@ class SpriteImages
     public function handle($request, Closure $next)
     {
     }
-
 }

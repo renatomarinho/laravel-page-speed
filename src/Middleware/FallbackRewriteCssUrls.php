@@ -17,5 +17,4 @@ class FallbackRewriteCssUrls
     public function handle($request, Closure $next)
     {
     }
-
 }

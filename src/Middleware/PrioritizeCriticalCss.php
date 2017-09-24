@@ -17,5 +17,4 @@ class PrioritizeCriticalCss
     public function handle($request, Closure $next)
     {
     }
-
 }
