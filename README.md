@@ -15,10 +15,16 @@ You can install the package via composer:
 ```bash
 $ composer require renatomarinho/laravel-page-speed
 ```
-
- Add the Service Provider to your **config/app.php**: `RenatoMarinho\LaravelPageSpeed\ServiceProvider::class` 
+### Laravel 5.5 and up
  
+You don't have to do anything else, this package uses Package Auto-Discovery's feature, and should be available as soon as you install it via Composer.
+
+### Laravel 5.4 or 5.3
+
+Add the Service Provider to your **config/app.php**: `RenatoMarinho\LaravelPageSpeed\ServiceProvider::class`
+
  *This is required for publishing the configuration file:* 
+ 
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
 
 Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and others - middleware must be registered in the kernel:
