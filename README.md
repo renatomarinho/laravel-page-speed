@@ -28,10 +28,11 @@ Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class`
 
 protected $middleware = [
     ...
-    \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
+    \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
+    \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
 ]
 ```
 
@@ -50,6 +51,11 @@ protected $middleware = [
         <td><strong>Name</strong></td>
         <td><strong>Description</strong></td>
         <td><strong>Available</strong></td>
+    <tr>
+    <tr>
+        <td>insert_dns_prefetch</td>
+        <td>Injects <link rel="dns-prefetch" href="//www.example.com"> tags in the HEAD to enable the browser to do DNS prefetching</td>
+        <td>YES</td>
     <tr>
     <tr>
         <td>remove_quotes</td>
@@ -149,11 +155,6 @@ protected $middleware = [
     <tr>
         <td>inline_preview_images</td>
         <td>Delays original images; serves inlined, low-quality placeholder images until originals are loaded</td>
-        <td>NO</td>
-    <tr>
-    <tr>
-        <td>insert_dns_prefetch</td>
-        <td>Injects <link rel="dns-prefetch" href="//www.example.com"> tags in the HEAD to enable the browser to do DNS prefetching</td>
         <td>NO</td>
     <tr>
     <tr>
