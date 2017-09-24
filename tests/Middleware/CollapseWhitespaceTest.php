@@ -14,7 +14,9 @@ class CollapseWhitespaceTest extends TestCase
 
     public function testApply()
     {
-        $compress = '<!doctype html><html class="no-js" lang=""><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>';
-        $this->assertSame($compress, $this->middleware->apply( $this->html ));
+        $partial = explode('<title>', $this->html);
+
+        $compress = '<!doctype html><html class="no-js" lang=""><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge">';
+        $this->assertSame($compress, $this->middleware->apply( trim($partial[0]) ));
     }
 }
