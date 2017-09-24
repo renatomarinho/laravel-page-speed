@@ -3,6 +3,7 @@
 [![Laravel 5.3][icon-l53]][link-laravel]
 [![Laravel 5.4][icon-l54]][link-laravel]
 [![Laravel 5.5][icon-l55]][link-laravel]
+[![Build Status](https://travis-ci.org/renatomarinho/laravel-page-speed.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-page-speed)
 [![Total Downloads][icon-downloads]][link-downloads]
 
 ### Simple package to minify HTML output on demand which results on a 35%+ optimization.
