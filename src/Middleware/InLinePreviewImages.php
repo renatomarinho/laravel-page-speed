@@ -17,5 +17,4 @@ class InLinePreviewImages
     public function handle($request, Closure $next)
     {
     }
-
 }

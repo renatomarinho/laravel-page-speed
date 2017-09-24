@@ -17,5 +17,4 @@ class InLineImportToLink
     public function handle($request, Closure $next)
     {
     }
-
 }

@@ -17,5 +17,4 @@ class InLineGoogleFontCss
     public function handle($request, Closure $next)
     {
     }
-
 }

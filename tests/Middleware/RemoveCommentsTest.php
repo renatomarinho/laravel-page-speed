@@ -14,7 +14,9 @@ class RemoveCommentsTest extends TestCase
 
     public function testApply()
     {
-        $this->assertNotContains("<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->",
-            $this->middleware->apply( $this->html ));
+        $this->assertNotContains(
+            "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->",
+            $this->middleware->apply($this->html)
+        );
     }
 }

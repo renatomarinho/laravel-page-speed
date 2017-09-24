@@ -14,7 +14,7 @@ class ElideAttributesTest extends TestCase
 
     public function testApply()
     {
-        $html = $this->middleware->apply( $this->html );
+        $html = $this->middleware->apply($this->html);
 
         $this->assertContains('<input type="text" disabled value="teste" width="100%">', $html);
         $this->assertContains('<input type="text" disabled>', $html);

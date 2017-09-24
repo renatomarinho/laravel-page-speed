@@ -17,5 +17,4 @@ class DeferJavascript
     public function handle($request, Closure $next)
     {
     }
-
 }

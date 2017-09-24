@@ -17,5 +17,4 @@ class OutlineCss
     public function handle($request, Closure $next)
     {
     }
-
 }

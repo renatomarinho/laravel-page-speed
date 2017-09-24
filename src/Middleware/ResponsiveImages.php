@@ -17,5 +17,4 @@ class ResponsiveImages
     public function handle($request, Closure $next)
     {
     }
-
 }

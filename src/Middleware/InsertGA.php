@@ -17,5 +17,4 @@ class InsertGA
     public function handle($request, Closure $next)
     {
     }
-
 }

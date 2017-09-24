@@ -17,5 +17,4 @@ class MoveCssAboveScripts
     public function handle($request, Closure $next)
     {
     }
-
 }

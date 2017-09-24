@@ -17,5 +17,4 @@ class Pedantic
     public function handle($request, Closure $next)
     {
     }
-
 }

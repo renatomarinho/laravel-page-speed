@@ -2,7 +2,8 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
-use Closure, Config;
+use Closure;
+use Config;
 
 abstract class PageSpeed
 {

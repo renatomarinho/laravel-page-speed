@@ -17,5 +17,4 @@ class ExtendCache
     public function handle($request, Closure $next)
     {
     }
-
 }

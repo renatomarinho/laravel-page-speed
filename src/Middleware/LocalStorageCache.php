@@ -17,5 +17,4 @@ class LocalStorageCache
     public function handle($request, Closure $next)
     {
     }
-
 }
