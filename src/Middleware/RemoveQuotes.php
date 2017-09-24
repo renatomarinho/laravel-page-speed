@@ -17,6 +17,7 @@ class RemoveQuotes extends PageSpeed
             '/border="(.*?)"/' => 'border=$1',
             '/crossorigin="(.*?)"/' => 'crossorigin=$1',
             '/rel="(.*?)"/' => 'rel=$1',
+            '/type="(.*?)"/' => 'type=$1',
         ];
 
         return $this->replace($replace, $buffer);
