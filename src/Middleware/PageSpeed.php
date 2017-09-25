@@ -8,13 +8,20 @@ use Config;
 abstract class PageSpeed
 {
     /**
+     * Apply rules.
+     *
+     * @param string $buffer
+     * @return string
+     */
+    abstract public function apply($buffer);
+
+    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
-     * @return mixed
+     * @return \Illuminate\Http\Response $response
      */
-
     public function handle($request, Closure $next)
     {
         $response = $next($request);
@@ -24,7 +31,14 @@ abstract class PageSpeed
         return $response->setContent($newContent);
     }
 
-    protected function replace(array $replace, string $buffer) : string
+    /**
+     * Replace content response.
+     *
+     * @param  array $replace
+     * @param  string $buffer
+     * @return string
+     */
+    protected function replace(array $replace, $buffer)
     {
         return preg_replace(array_keys($replace), array_values($replace), $buffer);
     }
