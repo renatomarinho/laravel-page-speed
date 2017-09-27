@@ -20,7 +20,7 @@
     "illuminate/support": "5.3.x|5.4.x|5.5.x"
   },
   "require-dev": {
-    "phpunit/phpunit": "^6.2",
+    "phpunit/phpunit": "~5.7",
     "orchestra/testbench": "~3.2",
     "squizlabs/php_codesniffer": "^2.3"
   },
