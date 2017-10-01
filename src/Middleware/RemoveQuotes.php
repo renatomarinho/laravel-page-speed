@@ -16,7 +16,7 @@ class RemoveQuotes extends PageSpeed
             '/align="(.*?)"/' => 'align=$1',
             '/border="(.*?)"/' => 'border=$1',
             '/crossorigin="(.*?)"/' => 'crossorigin=$1',
-            '/rel="(.*?)"/' => 'rel=$1',
+            //'/rel="(.*?)"/' => 'rel=$1',
             '/type="(.*?)"/' => 'type=$1',
         ];
 
