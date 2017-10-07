@@ -9,11 +9,11 @@ class InsertDNSPrefetch extends PageSpeed
         preg_match_all(
             '#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#',
             $buffer,
-            $match,
+            $matches,
             PREG_OFFSET_CAPTURE
         );
 
-        $dnsPrefetch = collect($match[0])->map(function ($item) {
+        $dnsPrefetch = collect($matches[0])->map(function ($item) {
 
             $domain = (new TrimUrls)->apply($item[0]);
             $domain = explode(
