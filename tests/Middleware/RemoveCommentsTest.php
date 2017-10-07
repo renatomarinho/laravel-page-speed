@@ -18,5 +18,25 @@ class RemoveCommentsTest extends TestCase
             "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->",
             $this->middleware->apply($this->html)
         );
+
+        $this->assertContains(
+            "<!--[if IE 8]>",
+            $this->middleware->apply($this->html)
+        );
+
+        $this->assertContains(
+            "<!--[if !IE]><!-->",
+            $this->middleware->apply($this->html)
+        );
+
+        $this->assertContains(
+            "<!--<![endif]-->",
+            $this->middleware->apply($this->html)
+        );
+
+        $this->assertContains(
+            "<![endif]-->",
+            $this->middleware->apply($this->html)
+        );
     }
 }
