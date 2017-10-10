@@ -36,4 +36,14 @@ abstract class TestCase extends Orchestra
             return $response;
         };
     }
+
+    /**
+     * Set up the environment.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('laravel-page-speed.enable', true);
+    }
 }

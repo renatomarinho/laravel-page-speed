@@ -25,6 +25,11 @@ abstract class PageSpeed
     public function handle($request, Closure $next)
     {
         $response = $next($request);
+
+        if (! Config::get('laravel-page-speed.enable')) {
+            return $response;
+        }
+
         $html = $response->getContent();
         $newContent = $this->apply($html);
 
