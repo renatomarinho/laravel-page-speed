@@ -28,4 +28,12 @@ abstract class TestCase extends Orchestra
     {
         return [ServiceProvider::class];
     }
+
+    protected function getNext()
+    {
+        $response = (new \Illuminate\Http\Response($this->html));
+        return function ($request) use ($response) {
+            return $response;
+        };
+    }
 }
