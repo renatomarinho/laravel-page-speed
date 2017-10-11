@@ -2,6 +2,7 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Test\Middleware;
 
+use Illuminate\Http\Request;
 use RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
 
@@ -12,31 +13,35 @@ class RemoveCommentsTest extends TestCase
         $this->middleware = new RemoveComments();
     }
 
-    public function testApply()
+    public function testRemoveComments()
     {
+        $request = new Request();
+
+        $response = $this->middleware->handle($request, $this->getNext());
+
         $this->assertNotContains(
             "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->",
-            $this->middleware->apply($this->html)
+            $response->getContent()
         );
 
         $this->assertContains(
             "<!--[if IE 8]>",
-            $this->middleware->apply($this->html)
+            $response->getContent()
         );
 
         $this->assertContains(
             "<!--[if !IE]><!-->",
-            $this->middleware->apply($this->html)
+            $response->getContent()
         );
 
         $this->assertContains(
             "<!--<![endif]-->",
-            $this->middleware->apply($this->html)
+            $response->getContent()
         );
 
         $this->assertContains(
             "<![endif]-->",
-            $this->middleware->apply($this->html)
+            $response->getContent()
         );
     }
 }

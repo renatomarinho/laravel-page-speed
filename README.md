@@ -5,6 +5,7 @@
 [![Laravel 5.5][icon-l55]][link-laravel]
 [![Build Status](https://travis-ci.org/renatomarinho/laravel-page-speed.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-page-speed)
 [![License](https://poser.pugx.org/renatomarinho/laravel-page-speed/license)](https://packagist.org/packages/renatomarinho/laravel-page-speed)
+[![Latest Stable Version](https://poser.pugx.org/renatomarinho/laravel-page-speed/version)](https://packagist.org/packages/renatomarinho/laravel-page-speed)
 [![Total Downloads][icon-downloads]][link-downloads]
 
 ### Simple package to minify HTML output on demand which results on a 35%+ optimization.

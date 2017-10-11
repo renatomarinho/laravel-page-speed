@@ -28,4 +28,22 @@ abstract class TestCase extends Orchestra
     {
         return [ServiceProvider::class];
     }
+
+    protected function getNext()
+    {
+        $response = (new \Illuminate\Http\Response($this->html));
+        return function ($request) use ($response) {
+            return $response;
+        };
+    }
+
+    /**
+     * Set up the environment.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('laravel-page-speed.enable', true);
+    }
 }
