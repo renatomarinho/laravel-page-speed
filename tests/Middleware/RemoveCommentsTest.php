@@ -15,9 +15,7 @@ class RemoveCommentsTest extends TestCase
 
     public function testRemoveComments()
     {
-        $request = new Request();
-
-        $response = $this->middleware->handle($request, $this->getNext());
+        $response = $this->middleware->handle($this->request, $this->getNext());
 
         $this->assertNotContains(
             "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->",

@@ -15,9 +15,7 @@ class TrimUrlsTest extends TestCase
 
     public function testTrimUrls()
     {
-        $request = new Request();
-
-        $response = $this->middleware->handle($request, $this->getNext());
+        $response = $this->middleware->handle($this->request, $this->getNext());
 
         $this->assertNotContains("https://", $response->getContent());
         $this->assertNotContains("http://", $response->getContent());

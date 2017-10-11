@@ -15,9 +15,7 @@ class RemoveQuotesTest extends TestCase
 
     public function testRemoveQuotes()
     {
-        $request = new Request();
-
-        $response = $this->middleware->handle($request, $this->getNext());
+        $response = $this->middleware->handle($this->request, $this->getNext());
 
         $this->assertContains('<link rel=apple-touch-icon href=icon.png>', $response->getContent());
         $this->assertContains('<meta charset=utf-8>', $response->getContent());

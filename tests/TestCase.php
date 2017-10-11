@@ -2,6 +2,7 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Test;
 
+use Illuminate\Http\Request;
 use RenatoMarinho\LaravelPageSpeed\ServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -17,6 +18,7 @@ abstract class TestCase extends Orchestra
         $this->getMiddleware();
 
         $this->html = $this->getBoilerplateHTML();
+        $this->request = new Request();
     }
 
     private function getBoilerplateHTML()

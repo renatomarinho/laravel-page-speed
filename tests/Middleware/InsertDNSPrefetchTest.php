@@ -15,10 +15,7 @@ class InsertDNSPrefetchTest extends TestCase
 
     public function testInsertDNSPrefetch()
     {
-        $request = new Request();
-
-        $response = $this->middleware->handle($request, $this->getNext());
-
+        $response = $this->middleware->handle($this->request, $this->getNext());
 
         $this->assertContains('<link rel="dns-prefetch" href="//github.com">', $response->getContent());
         $this->assertContains('<link rel="dns-prefetch" href="//browsehappy.com">', $response->getContent());

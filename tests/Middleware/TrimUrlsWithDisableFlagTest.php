@@ -17,9 +17,7 @@ class TrimUrlsWithDisableFlagTest extends TestCase
     {
         $this->app['config']->set('laravel-page-speed.enable', false);
 
-        $request = new Request();
-
-        $response = $this->middleware->handle($request, $this->getNext());
+        $response = $this->middleware->handle($this->request, $this->getNext());
 
         $this->assertContains("https://", $response->getContent());
         $this->assertContains("http://", $response->getContent());
