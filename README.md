@@ -27,9 +27,13 @@ Add the Service Provider to your **config/app.php**: `RenatoMarinho\LaravelPageS
 
  *This is required for publishing the configuration file:* 
  
+## Publish configuration file
+
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
 
-Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and others - middleware must be registered in the kernel:
+## Register Middlewares
+
+Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and others middleware must be registered in the kernel:
 
 ```php
 //app/Http/Kernel.php
@@ -265,6 +269,17 @@ protected $middleware = [
 </table>
 
 <hr />
+
+## Configuration
+
+You would probably like to set up the local environment to get a readable output.
+
+```php
+//config/laravel-page-speed.php
+
+//Set this field to false to disable the laravel page speed service.
+'enable' => env('LARAVEL_PAGE_SPEED_ENABLE', true),
+```
 
 ## Testing
 
