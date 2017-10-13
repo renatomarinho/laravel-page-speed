@@ -287,6 +287,10 @@ You would probably like to set up the local environment to get a readable output
 $ composer test
 ```
 
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
 ## Credits
 
 - [Renato Marinho][link-author]
