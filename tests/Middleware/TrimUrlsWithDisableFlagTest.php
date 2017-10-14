@@ -23,5 +23,4 @@ class TrimUrlsWithDisableFlagTest extends TestCase
         $this->assertContains("http://", $response->getContent());
         $this->assertContains("https://code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
     }
-
 }
