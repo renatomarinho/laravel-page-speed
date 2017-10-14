@@ -20,7 +20,7 @@ class InlineCssTest extends TestCase
         $this->assertContains('class="page_speed_', $response->getContent());
         $this->assertContains('class="btn page_speed_', $response->getContent());
         $this->assertContains('class="selected page_speed_', $response->getContent());
-        
+
         $this->assertNotContains('class="selected"', $response->getContent());
         $this->assertNotContains('class="btn"', $response->getContent());
         $this->assertNotContains('style="', $response->getContent());
