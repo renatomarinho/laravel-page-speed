@@ -4,6 +4,7 @@ namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
 use Config;
+use Illuminate\Support\Str;
 
 abstract class PageSpeed
 {
@@ -26,7 +27,7 @@ abstract class PageSpeed
     {
         $response = $next($request);
 
-        if (! Config::get('laravel-page-speed.enable')) {
+        if (! $this->shouldProcessPageSpeed($request)) {
             return $response;
         }
 
@@ -46,5 +47,38 @@ abstract class PageSpeed
     protected function replace(array $replace, $buffer)
     {
         return preg_replace(array_keys($replace), array_values($replace), $buffer);
+    }
+
+    /**
+     * Check Laravel Page Speed is enabled or not
+     *
+     * @return bool
+     */
+    public function isEnable()
+    {
+        return Config::get('laravel-page-speed.enable');
+    }
+
+    /**
+     * Should Process
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return bool
+     */
+    protected function shouldProcessPageSpeed($request)
+    {
+        if (! $this->isEnable()) {
+            return false;
+        }
+
+        $patterns = Config::get('laravel-page-speed.skip');
+
+        foreach ($patterns as $pattern) {
+            if ($request->is($pattern)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
