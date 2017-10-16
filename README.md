@@ -273,6 +273,10 @@ protected $middleware = [
 
 ## Configuration
 
+After installing package, you may need to configure some options.
+
+### Disable Service
+
 You would probably like to set up the local environment to get a readable output.
 
 ```php
@@ -281,6 +285,22 @@ You would probably like to set up the local environment to get a readable output
 //Set this field to false to disable the laravel page speed service.
 'enable' => env('LARAVEL_PAGE_SPEED_ENABLE', true),
 ```
+### Skip routes
+
+You would probably like to configure the package to skip some routes.
+
+```php
+//config/laravel-page-speed.php
+
+//You can use * as wildcard.
+'skip' => [
+    '*.pdf', //Ignore all routes with final .pdf
+    '*/downloads/*',//Ignore all routes that contain 'downloads'
+];
+```
+
+By default this field comes configured with some options, so feel free to configure according to your needs...
+
 
 ## Testing
 
