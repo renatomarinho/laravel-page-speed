@@ -4,7 +4,6 @@ namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
 use Config;
-use Illuminate\Support\Str;
 
 abstract class PageSpeed
 {
