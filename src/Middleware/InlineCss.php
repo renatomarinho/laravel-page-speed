@@ -36,7 +36,7 @@ class InlineCss extends PageSpeed
 
             $this->style[] = [
                 'class' => $class,
-                'attributes' => preg_quote($attributes,'/')];
+                'attributes' => preg_quote($attributes, '/')];
         });
 
         $injectStyle = implode(' ', $this->inline);
