@@ -55,7 +55,7 @@ abstract class PageSpeed
     protected function isEnable()
     {
         $enable = config('laravel-page-speed.enable');
-        return (is_null($enable))?true: (boolean) $enable ;
+        return (is_null($enable))?true: (boolean) $enable;
     }
 
     /**
@@ -67,16 +67,13 @@ abstract class PageSpeed
     protected function shouldProcessPageSpeed($request)
     {
         $patterns = config('laravel-page-speed.skip');
+        $patterns = (is_null($patterns))?[]: $patterns;
 
         if (! $this->isEnable()) {
             return false;
         }
 
-        if ( !is_array($patterns) ) {
-            return false;
-        }
-
-        return collect($patterns)->every(function($pattern) use ($request){
+        return collect($patterns)->every(function ($pattern) use ($request) {
             if (!$request->is($pattern)) {
                 return true;
             }
