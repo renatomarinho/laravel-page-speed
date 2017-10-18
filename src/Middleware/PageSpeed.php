@@ -3,7 +3,6 @@
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
-use Config;
 
 abstract class PageSpeed
 {
@@ -53,9 +52,10 @@ abstract class PageSpeed
      *
      * @return bool
      */
-    public function isEnable()
+    protected function isEnable()
     {
-        return Config::get('laravel-page-speed.enable');
+        $enable = config('laravel-page-speed.enable');
+        return (is_null($enable))?true: (boolean) $enable ;
     }
 
     /**
@@ -66,18 +66,20 @@ abstract class PageSpeed
      */
     protected function shouldProcessPageSpeed($request)
     {
+        $patterns = config('laravel-page-speed.skip');
+
         if (! $this->isEnable()) {
             return false;
         }
 
-        $patterns = Config::get('laravel-page-speed.skip');
-
-        foreach ($patterns as $pattern) {
-            if ($request->is($pattern)) {
-                return false;
-            }
+        if ( !is_array($patterns) ) {
+            return false;
         }
 
-        return true;
+        return collect($patterns)->every(function($pattern) use ($request){
+            if (!$request->is($pattern)) {
+                return true;
+            }
+        });
     }
 }

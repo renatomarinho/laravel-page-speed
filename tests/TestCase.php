@@ -46,7 +46,7 @@ abstract class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('laravel-page-speed.enable', true);
-        $app['config']->set('laravel-page-speed.skip', []);
+        config(['laravel-page-speed.enable' => true]);
+        config(['laravel-page-speed.skip' => []]);
     }
 }
