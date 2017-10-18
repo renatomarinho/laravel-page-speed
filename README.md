@@ -50,11 +50,11 @@ protected $middleware = [
 ]
 ```
 
-##### Before
+### Before
 
 ![Before of Laravel Page Speed][link-before]
 
-##### After
+### After
 
 ![After of Laravel Page Speed][link-after]
 
