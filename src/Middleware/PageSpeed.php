@@ -73,10 +73,12 @@ abstract class PageSpeed
             return false;
         }
 
-        return collect($patterns)->every(function ($pattern) use ($request) {
-            if (!$request->is($pattern)) {
-                return true;
+        foreach ($patterns as $pattern) {
+            if ($request->is($pattern)) {
+                return false;
             }
-        });
+        }
+
+        return true;
     }
 }
