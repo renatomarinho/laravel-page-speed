@@ -27,11 +27,11 @@ Add the Service Provider to your **config/app.php**: `RenatoMarinho\LaravelPageS
 
  *This is required for publishing the configuration file:* 
  
-## Publish configuration file
+#### Publish configuration file
 
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
 
-## Register Middlewares
+#### Register Middlewares
 
 Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and others middleware must be registered in the kernel:
 
@@ -50,11 +50,11 @@ protected $middleware = [
 ]
 ```
 
-#### Before
+### Before
 
 ![Before of Laravel Page Speed][link-before]
 
-#### After
+### After
 
 ![After of Laravel Page Speed][link-after]
 
