@@ -44,6 +44,10 @@
             <button name="ok" disabled="disabled" class="btn" style="border:3px solid blue;">OK</button>
             <button class="btn" name="ok" disabled=disabled style="border:1px solid red">OK</button>
 
+            <button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid || btnLoading">
+                <span ng-if="!btnLoading"> ok </span> <span ng-if="btnLoading"> <i class="fa fa-circle-o-notch fa-spin"></i> </span>
+            </button>
+
         </form>
 
         <script src="https://github.com/renatomarinho/laravel-page-speed/test/Boilerplate/js/vendor/modernizr-3.5.0.min.js"></script>

@@ -22,4 +22,11 @@ class ElideAttributesTest extends TestCase
         $this->assertContains('<button name="ok" disabled class="btn" style="border:3px solid blue;">OK</button>', $response->getContent());
         $this->assertContains('<form class="form" style="display:block;border:1px solid red;">', $response->getContent());
     }
+
+    public function testSupport_NGDisabled()
+    {
+        $response = $this->middleware->handle($this->request, $this->getNext());
+
+        $this->assertContains('<button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid || btnLoading">', $response->getContent());
+    }
 }
