@@ -8,7 +8,7 @@
 [![Latest Stable Version](https://poser.pugx.org/renatomarinho/laravel-page-speed/version)](https://packagist.org/packages/renatomarinho/laravel-page-speed)
 [![Total Downloads][icon-downloads]][link-downloads]
 
-### Simple package to minify HTML output on demand which results on a 35%+ optimization.
+### Simple package to minify HTML output on demand which results in a 35%+ optimization.
 
 ## Installation is easy
 
@@ -19,7 +19,7 @@ $ composer require renatomarinho/laravel-page-speed
 ```
 ### Laravel 5.5 and up
  
-You don't have to do anything else, this package uses Package Auto-Discovery's feature, and should be available as soon as you install it via Composer.
+You don't have to do anything else, this package uses the Package Auto-Discovery feature, and should be available as soon as you install it via Composer.
 
 ### Laravel 5.4 or 5.3
 
@@ -33,7 +33,7 @@ Add the Service Provider to your **config/app.php**: `RenatoMarinho\LaravelPageS
 
 #### Register Middlewares
 
-Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and others middleware must be registered in the kernel:
+Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and other middleware must be registered in the kernel:
 
 ```php
 //app/Http/Kernel.php
@@ -198,7 +198,7 @@ protected $middleware = [
     </tr>
     <tr>
         <td>move_css_above_scripts</td>
-        <td>Moves CSS Above Scripts</td>
+        <td>Moves CSS above scripts</td>
         <td>NO</td>
     </tr>
     <tr>
