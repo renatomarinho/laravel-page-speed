@@ -17,9 +17,11 @@ class RemoveQuotesTest extends TestCase
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
+
         $this->assertContains('<link rel="apple-touch-icon" href="icon.png">', $response->getContent());
         $this->assertContains('<meta charset=utf-8>', $response->getContent());
         $this->assertContains('<meta name=viewport content="width=device-width, initial-scale=1">', $response->getContent());
-        $this->assertContains('<img src=http://emblemsbf.com/img/18346.jpg width=250 style="height:300px; padding:10px" />', $response->getContent());
+        $this->assertContains('<img src=http://emblemsbf.com/img/18346.jpg width=250 style="height:300px; padding:10px" >', $response->getContent());
+        $this->assertContains('<img src=/images/1000coin.png>', $response->getContent());
     }
 }
