@@ -301,6 +301,7 @@ You would probably like to configure the package to skip some routes.
 
 By default this field comes configured with some options, so feel free to configure according to your needs...
 
+*Notice*: This package skip automatically binary response. See [File Downloads][link-file-download].
 
 ## Testing
 
@@ -336,3 +337,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-after]: https://i.imgur.com/IKWKLkL.png
 [link-author]: https://github.com/renatomarinho
 [link-contributors]: ../../contributors
+[link-file-download]: https://laravel.com/docs/5.5/responses#file-downloads
