@@ -3,6 +3,7 @@
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 abstract class PageSpeed
 {
@@ -25,7 +26,7 @@ abstract class PageSpeed
     {
         $response = $next($request);
 
-        if (! $this->shouldProcessPageSpeed($request)) {
+        if (! $this->shouldProcessPageSpeed($request, $response)) {
             return $response;
         }
 
@@ -62,14 +63,19 @@ abstract class PageSpeed
      * Should Process
      *
      * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Response $response
      * @return bool
      */
-    protected function shouldProcessPageSpeed($request)
+    protected function shouldProcessPageSpeed($request, $response)
     {
         $patterns = config('laravel-page-speed.skip');
         $patterns = (is_null($patterns))?[]: $patterns;
 
         if (! $this->isEnable()) {
+            return false;
+        }
+
+        if ($response instanceof BinaryFileResponse) {
             return false;
         }
 
