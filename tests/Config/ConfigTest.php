@@ -3,11 +3,8 @@
 namespace RenatoMarinho\LaravelPageSpeed\Test\Config;
 
 use Illuminate\Http\Request;
-use RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace;
 use RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ConfigTest extends TestCase
 {
@@ -81,18 +78,5 @@ class ConfigTest extends TestCase
         $response = $this->middleware->handle($request, $this->getNext($request));
 
         $this->assertNotEquals($this->html, $response->getContent());
-    }
-
-    public function testSkipBinaryFileResponse()
-    {
-        $this->middleware = new CollapseWhitespace();
-
-        $request = Request::create('/', 'GET', [], [], ['file' => new UploadedFile(__FILE__, 'foo.php')]);
-
-        $response = $this->middleware->handle($request, function ($request) {
-            return response()->download($request->file);
-        });
-
-        $this->assertInstanceOf(BinaryFileResponse::class, $response);
     }
 }
