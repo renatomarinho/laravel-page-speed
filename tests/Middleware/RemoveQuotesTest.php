@@ -2,7 +2,6 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Test\Middleware;
 
-use Illuminate\Http\Request;
 use RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
 
@@ -16,7 +15,6 @@ class RemoveQuotesTest extends TestCase
     public function testRemoveQuotes()
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
-
 
         $this->assertContains('<link rel="apple-touch-icon" href="icon.png">', $response->getContent());
         $this->assertContains('<meta charset=utf-8>', $response->getContent());

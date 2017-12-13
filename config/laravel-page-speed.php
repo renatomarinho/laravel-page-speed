@@ -22,7 +22,6 @@ return [
     | You can use * as wildcard.
     |
     */
-
     'skip' => [
         '*.xml',
         '*.less',

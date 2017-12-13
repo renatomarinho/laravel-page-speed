@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CollapseWhitespaceTest extends TestCase
 {
-
     public function tearDown()
     {
         parent::tearDown();

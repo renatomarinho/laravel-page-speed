@@ -2,7 +2,6 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Test\Middleware;
 
-use Illuminate\Http\Request;
 use RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
 
