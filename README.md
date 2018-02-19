@@ -296,6 +296,7 @@ You would probably like to configure the package to skip some routes.
 'skip' => [
     '*.pdf', //Ignore all routes with final .pdf
     '*/downloads/*',//Ignore all routes that contain 'downloads'
+    'assets/*', // Ignore all routes with the 'assets' prefix
 ];
 ```
 
