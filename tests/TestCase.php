@@ -50,5 +50,6 @@ abstract class TestCase extends Orchestra
     {
         config(['laravel-page-speed.enable' => true]);
         config(['laravel-page-speed.skip' => []]);
+        config(['laravel-page-speed.disable_middleware' => []]);
     }
 }
