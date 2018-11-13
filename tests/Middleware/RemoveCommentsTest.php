@@ -40,5 +40,22 @@ class RemoveCommentsTest extends TestCase
             "<![endif]-->",
             $response->getContent()
         );
+        
+        $this->assertContains(
+            "/** comment of example */",
+            $response->getContent()
+        );
+
+        $this->assertContains(
+            "/*
+              * comment of example
+              */",
+            $response->getContent()
+        );
+
+        $this->assertContains(
+            "// comment of example",
+            $response->getContent()
+        );
     }
 }
