@@ -29,6 +29,8 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__.'/../config/laravel-page-speed.php' => config_path('laravel-page-speed.php'),
         ]);
+
+        $this->registerMiddleware();
     }
 
     /**
@@ -37,7 +39,6 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-page-speed.php', 'laravel-page-speed.php');
-        $this->registerMiddleware();
     }
 
     /**
@@ -55,7 +56,7 @@ class ServiceProvider extends BaseServiceProvider
             CollapseWhitespace::class,
         ];
 
-        $middlewares = array_diff($middlewares, config('laravel-page-speed.disable_middleware'));
+        $middlewares = array_diff($middlewares, $this->app['config']->get('laravel-page-speed.disable_middleware'));
 
         $kernel = $this->app[Kernel::class];
         foreach ($middlewares as $middleware) {
