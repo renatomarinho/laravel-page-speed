@@ -56,7 +56,7 @@ class ServiceProvider extends BaseServiceProvider
             CollapseWhitespace::class,
         ];
 
-        $middlewares = array_diff($middlewares, $this->app['config']->get('laravel-page-speed.disable_middleware'));
+        $middlewares = array_diff($middlewares, config('laravel-page-speed.disable_middleware', []));
 
         $kernel = $this->app[Kernel::class];
         foreach ($middlewares as $middleware) {
