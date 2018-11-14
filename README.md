@@ -304,6 +304,19 @@ By default this field comes configured with some options, so feel free to config
 
 *Notice*: This package skip automatically binary response. See [File Downloads][link-file-download].
 
+### Disable Middleware
+
+All filters operate with Auto-Discover. However, there are times when you do not want to use a specific filter.
+
+```php
+//config/laravel-page-speed.php
+
+//Set this field to Class to disable the filter.
+'disable_middleware' => [
+    'RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls',
+];
+```
+
 ## Testing
 
 ``` bash
