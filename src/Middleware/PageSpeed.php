@@ -3,6 +3,7 @@
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 abstract class PageSpeed
@@ -77,6 +78,10 @@ abstract class PageSpeed
 
         if ($response instanceof BinaryFileResponse) {
             return false;
+        }
+
+        if ($response instanceof StreamedResponse) {
+           return false;
         }
 
         foreach ($patterns as $pattern) {
