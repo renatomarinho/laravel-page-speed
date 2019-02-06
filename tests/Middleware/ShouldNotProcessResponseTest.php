@@ -2,47 +2,156 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Test\Middleware;
 
+use Mockery as m;
+use Illuminate\Http\Request;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use RenatoMarinho\LaravelPageSpeed\Middleware\PageSpeed;
+use RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace;
 
 class ShouldNotProcessResponseTest extends TestCase
 {
-    protected function getMiddleware()
-    {
-        $this->middleware = new RemoveQuotes();
-    }
+    /**
+     * PageSpeed middleware instance.
+     *
+     * @var \RenatoMarinho\LaravelPageSpeed\Middleware\PageSpeed
+     */
+    protected $middleware;
 
     /**
-     * Test that a StreamedResponse is ignored by middleware.
+     * Clean up the testing environment before the next test.
      *
      * @return void
      */
-    public function testAStreamedResponseWithRemoveQuotesMiddleware()
+    protected function tearDown()
     {
-        $response = $this->middleware->handle($this->request, $this->getNext());
+        parent::tearDown();
+        m::close();
+    }
+
+    /**
+     * Test that a BinaryFileResponse is ignored by any middleware.
+     *
+     * @return void
+     */
+    public function testSkipBinaryFileResponse()
+    {
+        $request = Request::create('/', 'GET', [], [], ['file' => new UploadedFile(__FILE__, 'foo.php')]);
+
+        $response = $this->middleware->handle($request, $this->getNextBinaryFileResponse());
+
+        $this->assertInstanceOf(BinaryFileResponse::class, $response);
+    }
+
+    /**
+     * Test that a StreamedResponse is ignored by any middleware.
+     *
+     * @return void
+     */
+    public function testSkipStreamedResponse()
+    {
+        $request = Request::create('/', 'GET');
+
+        $response = $this->middleware->handle($request, $this->getNextStreamedResponse());
 
         $this->assertInstanceOf(StreamedResponse::class, $response);
     }
 
     /**
-     * Get next response.
+     * Test a LogicException is throw when trying to process a
+     * BinaryFileResponse.
+     *
+     * @return void
+     *
+     * @expectedException \LogicException
+     */
+    public function testExpectLogicExceptionInBinaryFileResponse()
+    {
+        $request = Request::create('/', 'GET', [], [], ['file' => new UploadedFile(__FILE__, 'foo.php')]);
+
+        $middleware = $this->mockMiddlewareWhichAllowsPageSpeedProcess();
+
+        $middleware->handle($request, $this->getNextBinaryFileResponse());
+    }
+
+    /**
+     * Test a LogicException is throw when trying to process a
+     * StreamedResponse.
+     *
+     * @return void
+     *
+     * @expectedException \LogicException
+     */
+    public function testExpectLogicExceptionInStreamedResponse()
+    {
+        $request = Request::create('/', 'GET');
+
+        $middleware = $this->mockMiddlewareWhichAllowsPageSpeedProcess();
+
+        $middleware->handle($request, $this->getNextStreamedResponse());
+    }
+
+    /**
+     * Mock a BinaryFileResponse.
      *
      * @return \Closure
      */
-    protected function getNext()
+    protected function getNextBinaryFileResponse()
     {
-        $response =  (new StreamedResponse(function () {
-            echo "I am Streamed";
-        }));
+        return function ($request) {
+            return response()->download($request->file);
+        };
+    }
 
-        $response->headers->set('Content-Disposition', $response->headers->makeDisposition(
-            'attachment',
-            'foo.txt'
-        ));
+    /**
+     * Mock a StreamedResponse.
+     *
+     * @return \Closure
+     */
+    protected function getNextStreamedResponse()
+    {
+        return function ($request) {
+            $response = new StreamedResponse(function () {
+                echo "I am Streamed";
+            });
 
-        return function ($request) use ($response) {
+            $response->headers->set('Content-Disposition', $response->headers->makeDisposition(
+                'attachment',
+                'foo.txt'
+            ));
+
             return $response;
         };
+    }
+
+    /**
+     * Return an instance of the middleware which always
+     * allows processing of response.
+     *
+     * @return m\Mock|PageSpeed
+     */
+    protected function mockMiddlewareWhichAllowsPageSpeedProcess()
+    {
+        $mock = m::mock(CollapseWhitespace::class)
+                 ->shouldAllowMockingProtectedMethods()
+                 ->makePartial();
+
+        $mock->shouldReceive('shouldProcessPageSpeed')
+             ->once()
+             ->andReturn(true);
+
+        return $mock;
+    }
+
+    /**
+     * Middleware used during this test.
+     *
+     * @return void
+     */
+    protected function getMiddleware()
+    {
+        $this->middleware = new CollapseWhitespace();
     }
 }
