@@ -21,8 +21,7 @@
         <style>
             .laravel-page-speed {
                 text-align: center;
-                /* This is a single-line css comment */
-                color: black;
+                /* before - css inline comment*/color: black;/* after - css inline comment*/
             }
             /* This is
                 a multi-line
@@ -67,6 +66,17 @@
 
         </form>
 
+        <script>
+            // Single Line Comment
+            console.log('Laravel');
+            /*
+                Multi-line
+                Comment
+            */
+            console.log('Page');
+            /* before - inline comment*/console.log('Speed!');// after - inline comment
+        </script>
+
         <script src="https://github.com/renatomarinho/laravel-page-speed/test/Boilerplate/js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
@@ -79,15 +89,6 @@
         <script>
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
             ga('create','UA-XXXXX-Y','auto');ga('send','pageview');
-
-            // Single Line Comment
-            console.log('Laravel');
-            /*
-                Multi-line
-                Comment
-            */
-            console.log('Page');
-            /* before - inline comment*/ console.log('Speed!');  // after - inline comment
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     </body>

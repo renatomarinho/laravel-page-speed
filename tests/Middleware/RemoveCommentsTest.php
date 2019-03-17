@@ -24,12 +24,27 @@ class RemoveCommentsTest extends TestCase
     public function testRemoveHtmlComments()
     {
         $this->assertNotContains(
+            "<!-- Place favicon.ico in the root directory -->",
+            $this->response->getContent()
+        );
+
+        $this->assertNotContains(
+            "<!-- Add your site or application content here -->",
+            $this->response->getContent()
+        );
+        
+        $this->assertNotContains(
             "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->",
             $this->response->getContent()
         );
 
         $this->assertContains(
-            "<!--[if IE 8]>",
+            "<!--[if IE 8]> <html lang=\"en\" class=\"ie8 no-js\"> <![endif]-->",
+            $this->response->getContent()
+        );
+
+        $this->assertContains(
+            "<!--[if IE 9]> <html lang=\"en\" class=\"ie9 no-js\"> <![endif]-->",
             $this->response->getContent()
         );
 
@@ -42,12 +57,19 @@ class RemoveCommentsTest extends TestCase
             "<!--<![endif]-->",
             $this->response->getContent()
         );
+
+        $this->assertContains(
+            "<!--[if lte IE 9]>
+            <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->",
+            $this->response->getContent()
+        );
     }
 
     public function testRemoveCssComments()
     {
         $this->assertNotContains(
-            "/* This is a single-line css comment */",
+            "/* before - css inline comment*/color: black;/* after - css inline comment*/",
             $this->response->getContent()
         );
 
@@ -59,22 +81,10 @@ class RemoveCommentsTest extends TestCase
         );
 
         $this->assertContains(
-            "<!--<![endif]-->",
-            $this->response->getContent()
-        );
-
-        $this->assertContains(
-            '.laravel-page-speed',
-            $this->response->getContent()
-        );
-
-        $this->assertContains(
-            'text-align: center;',
-            $this->response->getContent()
-        );
-
-        $this->assertContains(
-            'color: black;',
+            '.laravel-page-speed {
+                text-align: center;
+                color: black;
+            }',
             $this->response->getContent()
         );
     }
@@ -88,39 +98,25 @@ class RemoveCommentsTest extends TestCase
 
         $this->assertNotContains(
             "/*
-            Multi-line1
+            Multi-line
             Comment
         */",
             $this->response->getContent()
         );
 
         $this->assertNotContains(
-            "// Single Line Comment",
-            $this->response->getContent()
-        );
-
-        $this->assertNotContains(
-            "/* before - inline comment*/",
-            $this->response->getContent()
-        );
-
-        $this->assertNotContains(
-            "// after - inline comment",
+            "/* before - inline comment*/console.log('Speed!');// after - inline comment",
             $this->response->getContent()
         );
 
         $this->assertContains(
-            "console.log('Laravel');",
-            $this->response->getContent()
-        );
-
-        $this->assertContains(
-            "console.log('Page');",
-            $this->response->getContent()
-        );
-
-        $this->assertContains(
-            "console.log('Speed!');",
+            "<script>
+            
+            console.log('Laravel');
+            
+            console.log('Page');
+            console.log('Speed!');
+        </script>",
             $this->response->getContent()
         );
     }
