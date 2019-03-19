@@ -98,9 +98,10 @@ class RemoveCommentsTest extends TestCase
 
         $this->assertNotContains(
             "/*
-            Multi-line
-            Comment
-        */",
+            *   Multi-line
+            *    
+            *   Comment
+            */",
             $this->response->getContent()
         );
 
