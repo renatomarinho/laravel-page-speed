@@ -7,7 +7,7 @@
 
 ### Simple package to minify HTML output on demand which results in a 35%+ optimization.
 
-## Installation is easy
+## Installation
 
 You can install the package via composer:
 
@@ -16,19 +16,21 @@ $ composer require renatomarinho/laravel-page-speed
 ```
 ### Laravel 5.5 and up
  
-You don't have to do anything else, this package uses the Package Auto-Discovery feature, and should be available as soon as you install it via Composer.
+Laravel 5.5 and up uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
 
 ### Laravel 5.4 or 5.3
 
-Add the Service Provider to your **config/app.php**: `RenatoMarinho\LaravelPageSpeed\ServiceProvider::class`
+Add the Service Provider to the providers array in **config/app.php**: 
+
+`RenatoMarinho\LaravelPageSpeed\ServiceProvider::class`
 
  *This is required for publishing the configuration file:* 
  
-#### Publish configuration file
+### Publish configuration file
 
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
 
-#### Register Middlewares
+## Do not forget to register middlewares
 
 Next, the `\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class` and other middleware must be registered in the kernel:
 
@@ -205,12 +207,12 @@ protected $middleware = [
     </tr>
     <tr>
         <td>outline_css</td>
-        <td>Moves large inline <style> tags into external files for cacheability</td>
+        <td>Moves large inline 'style' tags into external files for cacheability</td>
         <td>NO</td>
     </tr>
     <tr>
         <td>outline_javascript</td>
-        <td>Moves large inline <script> tags into external files for cacheability</td>
+        <td>Moves large inline 'script' tags into external files for cacheability</td>
         <td>NO</td>
     </tr>
     <tr>
@@ -299,7 +301,7 @@ You would probably like to configure the package to skip some routes.
 
 By default this field comes configured with some options, so feel free to configure according to your needs...
 
-*Notice*: This package skip automatically binary response. See [File Downloads][link-file-download].
+> *Notice*: This package skip automatically 'binary' and 'streamed' responses. See [File Downloads][link-file-download].
 
 ## Warning
 
@@ -338,4 +340,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-author]: https://github.com/renatomarinho
 [link-maintainer]: https://github.com/joaorobertopb
 [link-contributors]: ../../contributors
-[link-file-download]: https://laravel.com/docs/5.5/responses#file-downloads
+[link-file-download]: https://laravel.com/docs/5.8/responses#file-downloads
