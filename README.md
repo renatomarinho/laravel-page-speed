@@ -340,4 +340,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-author]: https://github.com/renatomarinho
 [link-maintainer]: https://github.com/joaorobertopb
 [link-contributors]: ../../contributors
-[link-file-download]: https://laravel.com/docs/5.8/responses#file-downloads
+[link-file-download]: https://laravel.com/docs/6.0/responses#file-downloads
