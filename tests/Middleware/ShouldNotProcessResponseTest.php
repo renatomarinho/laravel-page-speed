@@ -25,7 +25,7 @@ class ShouldNotProcessResponseTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         m::close();
@@ -64,11 +64,11 @@ class ShouldNotProcessResponseTest extends TestCase
      * BinaryFileResponse.
      *
      * @return void
-     *
-     * @expectedException \LogicException
      */
     public function testExpectLogicExceptionInBinaryFileResponse()
     {
+        $this->expectException('LogicException');
+
         $request = Request::create('/', 'GET', [], [], ['file' => new UploadedFile(__FILE__, 'foo.php')]);
 
         $middleware = $this->mockMiddlewareWhichAllowsPageSpeedProcess();
@@ -81,11 +81,11 @@ class ShouldNotProcessResponseTest extends TestCase
      * StreamedResponse.
      *
      * @return void
-     *
-     * @expectedException \LogicException
      */
     public function testExpectLogicExceptionInStreamedResponse()
     {
+        $this->expectException('LogicException');
+
         $request = Request::create('/', 'GET');
 
         $middleware = $this->mockMiddlewareWhichAllowsPageSpeedProcess();

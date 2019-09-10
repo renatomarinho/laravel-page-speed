@@ -16,8 +16,8 @@ class TrimUrlsTest extends TestCase
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertNotContains("https://", $response->getContent());
-        $this->assertNotContains("http://", $response->getContent());
-        $this->assertContains("//code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
+        $this->assertStringNotContainsString("https://", $response->getContent());
+        $this->assertStringNotContainsString("http://", $response->getContent());
+        $this->assertStringContainsString("//code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
     }
 }
