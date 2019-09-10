@@ -9,13 +9,13 @@ class CollapseWhitespaceTest extends TestCase
 {
     protected $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->response = $this->middleware->handle($this->request, $this->getNext());
     }
-    
+
     protected function getMiddleware()
     {
         $this->middleware = new CollapseWhitespace();
@@ -23,7 +23,7 @@ class CollapseWhitespaceTest extends TestCase
 
     public function testRemoveCommentsBeforeRunningCollapseWhiteSpace()
     {
-        $this->assertNotContains(
+        $this->assertStringNotContainsString(
             "/* before - inline comment*/console.log('Speed!');// after - inline comment",
             $this->response->getContent()
         );
@@ -38,7 +38,7 @@ class CollapseWhitespaceTest extends TestCase
 
         $this->assertSame($compress, trim($partial[0]));
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             "<script> console.log('Laravel'); console.log('Page'); console.log('Speed!'); </script>",
             $this->response->getContent()
         );
