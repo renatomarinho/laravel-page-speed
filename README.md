@@ -1,3 +1,7 @@
+<p align="center">
+    <img width="400" height="42" src="https://raw.githubusercontent.com/renatomarinho/laravel-page-speed/master/art/logo.png" alt="Laravel Page Speed logo" />
+</p>
+
 # Laravel Page Speed
 [![Project on GitScrum](https://gitscrum.com/badges/project.svg?project=gitscrum/bulls-eye-gitscrum-37)](https://gitscrum.com)
 [![Build Status](https://travis-ci.org/renatomarinho/laravel-page-speed.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-page-speed)
@@ -15,17 +19,17 @@ You can install the package via composer:
 $ composer require renatomarinho/laravel-page-speed
 ```
 ### Laravel 5.5 and up
- 
+
 Laravel 5.5 and up uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
 
 ### Laravel 5.4 or 5.3
 
-Add the Service Provider to the providers array in **config/app.php**: 
+Add the Service Provider to the providers array in **config/app.php**:
 
 `RenatoMarinho\LaravelPageSpeed\ServiceProvider::class`
 
- *This is required for publishing the configuration file:* 
- 
+ *This is required for publishing the configuration file:*
+
 ### Publish configuration file
 
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
@@ -109,7 +113,7 @@ protected $middleware = [
         <td>combine_heads</td>
         <td>Combines multiple <head> elements into one</td>
         <td>NO</td>
-    </tr> 
+    </tr>
     <tr>
         <td>combine_javascript</td>
         <td>Combines multiple JavaScript files into one</td>
@@ -265,7 +269,7 @@ protected $middleware = [
         <td>Sprites images</td>
         <td>NO</td>
     </tr>
-    
+
 </table>
 
 <hr />
@@ -321,9 +325,10 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 - [Renato Marinho][link-author]
 - [João Roberto P. Borges][link-maintainer]
+- [Caneco](https://twitter.com/caneco) (for the logo)
 - [All Contributors][link-contributors]
 
-## Inspiration 
+## Inspiration
 
 #### Mod Page Speed (https://www.modpagespeed.com/)
 
