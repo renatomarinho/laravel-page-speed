@@ -1,13 +1,16 @@
 <p align="center">
-    <img width="400" height="42" src="https://raw.githubusercontent.com/renatomarinho/laravel-page-speed/master/art/logo.png" alt="Laravel Page Speed logo" />
+    <img width="400" src="https://raw.githubusercontent.com/renatomarinho/laravel-page-speed/master/art/logo.png" alt="Laravel Page Speed logo" />
+</p>
+
+<p align="center">
+<a href="https://gitscrum.com"><img src="https://gitscrum.com/badges/project.svg?project=gitscrum/bulls-eye-gitscrum-37" alt="Git Scrum"></a>
+<a href="https://travis-ci.org/renatomarinho/laravel-page-speed"><img src="https://travis-ci.org/renatomarinho/laravel-page-speed.svg?branch=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/license" alt="License"></a>
+<a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/version" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/downloads" alt="Total Downloads"></a>
 </p>
 
 # Laravel Page Speed
-[![Project on GitScrum](https://gitscrum.com/badges/project.svg?project=gitscrum/bulls-eye-gitscrum-37)](https://gitscrum.com)
-[![Build Status](https://travis-ci.org/renatomarinho/laravel-page-speed.svg?branch=master)](https://travis-ci.org/renatomarinho/laravel-page-speed)
-[![License](https://poser.pugx.org/renatomarinho/laravel-page-speed/license)](https://packagist.org/packages/renatomarinho/laravel-page-speed)
-[![Latest Stable Version](https://poser.pugx.org/renatomarinho/laravel-page-speed/version)](https://packagist.org/packages/renatomarinho/laravel-page-speed)
-[![Total Downloads][icon-downloads]][link-downloads]
 
 ### Simple package to minify HTML output on demand which results in a 35%+ optimization.
 
@@ -336,10 +339,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[icon-downloads]: https://poser.pugx.org/renatomarinho/laravel-page-speed/downloads
-
-[link-laravel]: https://laravel.com
-[link-downloads]: https://packagist.org/packages/renatomarinho/laravel-page-speed
 [link-before]: https://i.imgur.com/cN3MWYh.png
 [link-after]: https://i.imgur.com/IKWKLkL.png
 [link-author]: https://github.com/renatomarinho
