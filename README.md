@@ -27,7 +27,7 @@ composer require renatomarinho/laravel-page-speed
 ```
 
 This package supports Laravel [Package Discovery][link-package-discovery].
- 
+
 ### Publish configuration file
 
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
@@ -48,6 +48,7 @@ protected $middleware = [
     \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
+    \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
 ]
 ```
 
