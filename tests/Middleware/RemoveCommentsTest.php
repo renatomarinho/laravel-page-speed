@@ -64,6 +64,16 @@ class RemoveCommentsTest extends TestCase
         <![endif]-->",
             $this->response->getContent()
         );
+
+        $this->assertStringContainsString(
+            "<p>Hello! I am /* not a comment */ at HTML context!</p>",
+            $this->response->getContent()
+        );
+
+        $this->assertStringContainsString(
+            "<p>Hello! I am // not a comment at HTML context!</p>",
+            $this->response->getContent()
+        );
     }
 
     public function testRemoveCssComments()
