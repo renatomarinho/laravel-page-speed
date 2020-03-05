@@ -16,27 +16,27 @@ class RemoveCommentsTest extends TestCase
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertNotContains(
+        $this->assertStringNotContainsString(
             "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->",
             $response->getContent()
         );
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             "<!--[if IE 8]>",
             $response->getContent()
         );
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             "<!--[if !IE]><!-->",
             $response->getContent()
         );
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             "<!--<![endif]-->",
             $response->getContent()
         );
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             "<![endif]-->",
             $response->getContent()
         );

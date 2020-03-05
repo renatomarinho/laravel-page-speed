@@ -13,7 +13,7 @@ abstract class TestCase extends Orchestra
 
     abstract protected function getMiddleware();
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

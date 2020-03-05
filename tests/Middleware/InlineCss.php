@@ -16,10 +16,10 @@ class InlineCssTest extends TestCase
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertContains('<style>.page_speed_', $response->getContent());
-        $this->assertContains('class="page_speed_', $response->getContent());
-        $this->assertContains('class="btn page_speed_', $response->getContent());
-        $this->assertContains('class="selected page_speed_', $response->getContent());
+        $this->assertStringContainsString('<style>.page_speed_', $response->getContent());
+        $this->assertStringContainsString('class="page_speed_', $response->getContent());
+        $this->assertStringContainsString('class="btn page_speed_', $response->getContent());
+        $this->assertStringContainsString('class="selected page_speed_', $response->getContent());
 
         $this->assertNotContains('class="selected"', $response->getContent());
         $this->assertNotContains('class="btn"', $response->getContent());

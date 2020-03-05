@@ -19,9 +19,9 @@ class ConfigTest extends TestCase
 
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertContains("https://", $response->getContent());
-        $this->assertContains("http://", $response->getContent());
-        $this->assertContains("https://code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
+        $this->assertStringContainsString("https://", $response->getContent());
+        $this->assertStringContainsString("http://", $response->getContent());
+        $this->assertStringContainsString("https://code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
     }
 
 
@@ -31,9 +31,9 @@ class ConfigTest extends TestCase
 
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertContains("//", $response->getContent());
-        $this->assertContains("//", $response->getContent());
-        $this->assertContains("//code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
+        $this->assertStringContainsString("//", $response->getContent());
+        $this->assertStringContainsString("//", $response->getContent());
+        $this->assertStringContainsString("//code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
     }
 
     public function testSkipRoute()
