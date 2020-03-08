@@ -22,7 +22,7 @@ class InlineCss extends PageSpeed
 
         $this->class = collect($matches[1])->mapWithKeys(function ($item) {
 
-            return [ 'page_speed_'.rand() => $item[0] ];
+            return [rand() => $item[0] ];
         })->unique();
 
         return $this->injectStyle()->injectClass()->fixHTML()->html;
