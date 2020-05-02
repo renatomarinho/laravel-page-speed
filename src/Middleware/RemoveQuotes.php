@@ -7,15 +7,15 @@ class RemoveQuotes extends PageSpeed
     public function apply($buffer)
     {
         $replace = [
-            '/ src="(.*?)"/' => ' src=$1',
-            '/ width="(.*?)"/' => ' width=$1',
-            '/ height="(.*?)"/' => ' height=$1',
-            '/ name="(.*?)"/' => ' name=$1',
-            '/ charset="(.*?)"/' => ' charset=$1',
-            '/ align="(.*?)"/' => ' align=$1',
-            '/ border="(.*?)"/' => ' border=$1',
-            '/ crossorigin="(.*?)"/' => ' crossorigin=$1',
-            '/ type="(.*?)"/' => ' type=$1',
+            '/ src="(.\S*?)"/' => ' src=$1',
+            '/ width="(.\S*?)"/' => ' width=$1',
+            '/ height="(.\S*?)"/' => ' height=$1',
+            '/ name="(.\S*?)"/' => ' name=$1',
+            '/ charset="(.\S*?)"/' => ' charset=$1',
+            '/ align="(.\S*?)"/' => ' align=$1',
+            '/ border="(.\S*?)"/' => ' border=$1',
+            '/ crossorigin="(.\S*?)"/' => ' crossorigin=$1',
+            '/ type="(.\S*?)"/' => ' type=$1',
             '/\/>/' => '>',
         ];
 
