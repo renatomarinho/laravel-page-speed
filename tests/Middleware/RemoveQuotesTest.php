@@ -22,5 +22,7 @@ class RemoveQuotesTest extends TestCase
         $this->assertContains('<img src=http://emblemsbf.com/img/18346.jpg width=250 style="height:300px; padding:10px" >', $response->getContent());
         $this->assertContains('<img src=/images/1000coin.png>', $response->getContent());
         $this->assertContains('<vue-component :src="\'src\'" :type="\'type\'" :width="200"></vue-component>', $response->getContent());
+        $this->assertContains('<img src="tile whitespace.png" width=250 style="height:300px; padding:10px">', $response->getContent());
+        $this->assertContains('<input type=text name="name with spaces" value="name with spaces" width=100%>', $response->getContent());
     }
 }
