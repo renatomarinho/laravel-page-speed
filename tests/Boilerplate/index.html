@@ -17,6 +17,16 @@
 
         <link rel="stylesheet" href="https://github.com/renatomarinho/laravel-page-speed/test/Boilerplate/css/normalize.css">
         <link rel="stylesheet" href="https://github.com/renatomarinho/laravel-page-speed/test/Boilerplate/css/main.css">
+
+        <style>
+            .laravel-page-speed {
+                text-align: center;
+                /* before - css inline comment*/color: black;/* after - css inline comment*/
+            }
+            /* This is
+                a multi-line
+                css comment */
+        </style>
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -56,6 +66,20 @@
 
         </form>
 
+        <script>
+            // Single Line Comment
+            console.log('Laravel');
+            /*
+
+                Multi-line
+
+                Comment
+
+            */
+            console.log('Page');
+            /* before - inline comment*/console.log('Speed!');// after - inline comment
+        </script>
+
         <script src="https://github.com/renatomarinho/laravel-page-speed/test/Boilerplate/js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
@@ -67,7 +91,7 @@
         <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
         <script>
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview');
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     </body>
