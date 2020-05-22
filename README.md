@@ -99,6 +99,12 @@ The **TrimUrls::class** filter trims URLs by resolving them by making them relat
 
 The **InlineCss::class** filter transforms the inline "style" attribute of tags into classes by moving the CSS to the header.
 
+### \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class
+
+Defers the execution of javascript in the HTML.
+
+> If necessary cancel deferring in some script, use `data-pagespeed-no-defer` as script attribute to cancel deferring.
+
 <hr>
 
 ## Configuration
