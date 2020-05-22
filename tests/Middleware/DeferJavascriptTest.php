@@ -7,14 +7,15 @@ use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
 
 class DeferJavascriptTest extends TestCase
 {
-    public function test_defer_javascript()
+    public function testDeferJavascript()
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertContains('Boilerplate/js/main.js" defer', $response->getContent());
-        $this->assertNotContains('analytics.js" async defer defer', $response->getContent());
-        $this->assertNotContains('analytics.js" async defer defer', $response->getContent());
-        $this->assertNotContains('<script defer>window.jQuery', $response->getContent());
+        $this->assertStringContainsString('Boilerplate/js/main.js" defer></script>', $response->getContent());
+        $this->assertStringContainsString('Boilerplate/js/plugins.js" data-pagespeed-no-defer></script>', $response->getContent());
+
+        $this->assertStringNotContainsString('analytics.js" async defer defer></script>', $response->getContent());
+        $this->assertStringNotContainsString('<script defer>window.jQuery', $response->getContent());
     }
 
     protected function getMiddleware()
