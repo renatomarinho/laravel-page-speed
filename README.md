@@ -136,14 +136,13 @@ By default this field comes configured with some options, so feel free to config
 
 ### Disable Middleware
 
-All filters operate with Auto-Discover. However, there are times when you do not want to use a specific filter.
+All middlewares operate with Auto-Discover. However, there are times when you do not want to use a specific middleware.
 
 ```php
 //config/laravel-page-speed.php
 
-//Set this field to Class to disable the filter.
 'disabled_middlewares' => [
-    'RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls',
+    \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
 ];
 ```
 
