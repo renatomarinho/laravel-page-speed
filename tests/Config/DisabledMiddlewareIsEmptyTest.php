@@ -4,13 +4,13 @@ namespace RenatoMarinho\LaravelPageSpeed\Test\Config;
 
 use Illuminate\Contracts\Http\Kernel;
 use RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls;
-use RenatoMarinho\LaravelPageSpeed\Test\TestDisableMiddlewareCase;
+use RenatoMarinho\LaravelPageSpeed\Test\TestDisabledMiddlewareCase;
 
-class DisableMiddlewareTest extends TestDisableMiddlewareCase
+class DisabledMiddlewareIsEmptyTest extends TestDisabledMiddlewareCase
 {
-    public function testDisableMiddleware()
+    public function testDisableMiddlewareIsEmpty()
     {
-        $this->assertFalse($this->app[Kernel::class]->hasMiddleware(TrimUrls::class));
+        $this->assertTrue($this->app[Kernel::class]->hasMiddleware(TrimUrls::class));
     }
 
     /**
@@ -20,6 +20,6 @@ class DisableMiddlewareTest extends TestDisableMiddlewareCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        config(['laravel-page-speed.disable_middleware' => [TrimUrls::class]]);
+        config(['laravel-page-speed.disabled_middlewares' => []]);
     }
 }

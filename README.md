@@ -27,7 +27,7 @@ composer require renatomarinho/laravel-page-speed
 ```
 
 This package supports Laravel [Package Discovery][link-package-discovery].
- 
+
 ### Publish configuration file
 
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
@@ -142,7 +142,7 @@ All filters operate with Auto-Discover. However, there are times when you do not
 //config/laravel-page-speed.php
 
 //Set this field to Class to disable the filter.
-'disable_middleware' => [
+'disabled_middlewares' => [
     'RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls',
 ];
 ```
