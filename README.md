@@ -148,7 +148,7 @@ All filters operate with Auto-Discover. However, there are times when you do not
 //config/laravel-page-speed.php
 
 //Set this field to Class to disable the filter.
-'disable_middleware' => [
+'disabled_middlewares' => [
     'RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls',
 ];
 ```
