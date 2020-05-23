@@ -27,7 +27,7 @@ composer require renatomarinho/laravel-page-speed
 ```
 
 This package supports Laravel [Package Discovery][link-package-discovery].
- 
+
 ### Publish configuration file
 
  `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`
@@ -48,6 +48,7 @@ protected $middleware = [
     \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
+    \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
 ]
 ```
 
@@ -98,6 +99,12 @@ The **TrimUrls::class** filter trims URLs by resolving them by making them relat
 ### \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class
 
 The **InlineCss::class** filter transforms the inline "style" attribute of tags into classes by moving the CSS to the header.
+
+### \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class
+
+Defers the execution of javascript in the HTML.
+
+> If necessary cancel deferring in some script, use `data-pagespeed-no-defer` as script attribute to cancel deferring.
 
 <hr>
 
