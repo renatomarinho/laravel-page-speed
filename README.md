@@ -141,6 +141,18 @@ By default this field comes configured with some options, so feel free to config
 
 > *Notice*: This package skip automatically 'binary' and 'streamed' responses. See [File Downloads][link-file-download].
 
+### Disable Middleware
+
+All middlewares operate with Auto-Discover. However, there are times when you do not want to use a specific middleware.
+
+```php
+//config/laravel-page-speed.php
+
+'disabled_middlewares' => [
+    \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
+];
+```
+
 ## Testing
 
 ```sh

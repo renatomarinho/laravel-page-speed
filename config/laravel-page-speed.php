@@ -57,4 +57,16 @@ return [
         '*.torrent'
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Disabled Middlewares
+    |--------------------------------------------------------------------------
+    |
+    | Middlewares to exclude. Using the Package Auto-Discovery.
+    | Specify class name.
+    |
+    */
+    'disabled_middlewares' => [
+        //
+    ],
 ];
