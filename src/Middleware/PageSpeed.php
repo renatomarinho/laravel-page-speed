@@ -76,9 +76,6 @@ abstract class PageSpeed
      */
     protected function shouldProcessPageSpeed($request, $response)
     {
-        $patterns = config('laravel-page-speed.skip');
-        $patterns = (is_null($patterns))?[]: $patterns;
-
         if (! $this->isEnable()) {
             return false;
         }
@@ -90,6 +87,9 @@ abstract class PageSpeed
         if ($response instanceof StreamedResponse) {
            return false;
         }
+
+        $patterns = config('laravel-page-speed.skip');
+        $patterns = is_null($patterns) ? [] : $patterns;
 
         foreach ($patterns as $pattern) {
             if ($request->is($pattern)) {
