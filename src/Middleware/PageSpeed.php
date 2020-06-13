@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 abstract class PageSpeed
 {
+    protected static $isEnabled;
+
     /**
      * Apply rules.
      *
@@ -56,8 +58,13 @@ abstract class PageSpeed
      */
     protected function isEnable()
     {
-        $enable = config('laravel-page-speed.enable');
-        return (is_null($enable))?true: (boolean) $enable;
+        if (! is_null(static::$isEnabled)) {
+            return static::$isEnabled;
+        }
+
+        static::$isEnabled = (bool) config('laravel-page-speed.enable', true);
+
+        return static::$isEnabled;
     }
 
     /**
