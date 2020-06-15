@@ -88,8 +88,7 @@ abstract class PageSpeed
            return false;
         }
 
-        $patterns = config('laravel-page-speed.skip');
-        $patterns = is_null($patterns) ? [] : $patterns;
+        $patterns = config('laravel-page-speed.skip', []);
 
         foreach ($patterns as $pattern) {
             if ($request->is($pattern)) {
