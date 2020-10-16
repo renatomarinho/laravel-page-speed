@@ -16,7 +16,13 @@ class LazyLoadImagesTest extends TestCase
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertContains('<img src="http://emblemsbf.com/img/18346.jpg" width="250" style="height:300px; padding:10px" loading="lazy"/>', $response->getContent());
-        $this->assertContains('<img src="tile whitespace.png" width="250" style="height:300px; padding:10px" loading="lazy"/>', $response->getContent());
+        $this->assertContains(
+            '<img loading="lazy" src="http://emblemsbf.com/img/18346.jpg" width="250" style="height:300px; padding:10px" />',
+            $response->getContent()
+        );
+        $this->assertContains(
+            '<img loading="lazy" src="tile whitespace.png" width="250" style="height:300px; padding:10px"/>',
+            $response->getContent()
+        );
     }
 }

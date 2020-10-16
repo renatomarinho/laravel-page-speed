@@ -9,7 +9,7 @@ class LazyLoadImages extends PageSpeed
     public function apply($buffer)
     {
         $replace = [
-            '/<img(\b[^><]((?!loading).)*)>/' => '<img $1 loading="lazy">',
+            '/<img(\b[^><]((?!loading).)*)\/?>/' => '<img loading="lazy"$1>',
         ];
 
         return $this->replace($replace, $buffer);
