@@ -4,17 +4,14 @@ namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
 
-class LazyLoadImages
+class LazyLoadImages extends PageSpeed
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
-     * @return mixed
-     */
-
-    public function handle($request, Closure $next)
+    public function apply($buffer)
     {
+        $replace = [
+            '/<img(\b[^><]((?!loading).)*)\/?>/' => '<img loading="lazy"$1>',
+        ];
+
+        return $this->replace($replace, $buffer);
     }
 }

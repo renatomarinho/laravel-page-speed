@@ -52,6 +52,7 @@ protected $middleware = [
     \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
+    \RenatoMarinho\LaravelPageSpeed\Middleware\LazyLoadImages::class,
 ]
 ```
 
