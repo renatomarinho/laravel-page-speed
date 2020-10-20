@@ -24,5 +24,17 @@ class LazyLoadImagesTest extends TestCase
             '<img loading="lazy" src="tile whitespace.png" width="250" style="height:300px; padding:10px"/>',
             $response->getContent()
         );
+        $this->assertContains(
+            '<img src="https://via.placeholder.com/200" width="200" alt="Image with eager loading" loading="eager">',
+            $response->getContent()
+        );
+        $this->assertContains(
+            '<img loading="auto" src="https://via.placeholder.com/200" height="200" alt="Image with auto loading">',
+            $response->getContent()
+        );
+        $this->assertContains(
+            '<img src="https://via.placeholder.com/200" height="200" loading="lazy" alt="Image with lazy loading">',
+            $response->getContent()
+        );
     }
 }
