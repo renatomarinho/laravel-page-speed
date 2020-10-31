@@ -7,8 +7,9 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
-    private const MIDDLEWARES_PATH = 'src/Middleware/';
+    private const MIDDLEWARES_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'Middleware/';
     private const MIDDLEWARES_NAMESPACE = 'RenatoMarinho\\LaravelPageSpeed\\Middleware\\';
+    private const ABSTRACT_MIDDLEWARE_PATH = 'RenatoMarinho\LaravelPageSpeed\Middleware\PageSpeed';
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -42,7 +43,11 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerMiddlewares()
     {
-        $middlewares = array_diff($this->getMiddlewares(), config('laravel-page-speed.disabled_middlewares', []));
+        $middlewares = collect($this->getMiddlewares())
+            ->diff(config('laravel-page-speed.disabled_middlewares', []))
+            ->reject(function ($middleware) {
+                return $middleware === self::ABSTRACT_MIDDLEWARE_PATH;
+            });
 
         foreach ($middlewares as $middleware) {
             $this->app[Kernel::class]->pushMiddleware($middleware);
