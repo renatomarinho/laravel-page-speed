@@ -17,6 +17,7 @@ matrix:
     - php: 7.1
       env: setup=lowest
     - php: 7.2
+    - php: 8.0
 
 sudo: false
 
