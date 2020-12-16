@@ -21,6 +21,9 @@ matrix:
     - php: 7.4
     - php: 7.4
       env: setup=lowest
+    - php: 8.0
+    - php: 8.0
+      env: setup=lowest
 
 cache:
   directories:
