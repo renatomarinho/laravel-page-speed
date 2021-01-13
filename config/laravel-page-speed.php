@@ -56,17 +56,4 @@ return [
         '*.m4v',
         '*.torrent'
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Disabled Middlewares
-    |--------------------------------------------------------------------------
-    |
-    | Middlewares to exclude. Using the Package Auto-Discovery.
-    | Specify class name.
-    |
-    */
-    'disabled_middlewares' => [
-        //
-    ],
 ];
