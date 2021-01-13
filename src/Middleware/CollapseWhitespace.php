@@ -20,6 +20,6 @@ class CollapseWhitespace extends PageSpeed
 
     protected function removeComments($buffer)
     {
-       return (new RemoveComments)->apply($buffer);
+        return (new RemoveComments)->apply($buffer);
     }
 }
