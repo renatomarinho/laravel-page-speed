@@ -16,10 +16,10 @@ class InsertDNSPrefetchTest extends TestCase
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertContains('<link rel="dns-prefetch" href="//github.com">', $response->getContent());
-        $this->assertContains('<link rel="dns-prefetch" href="//browsehappy.com">', $response->getContent());
-        $this->assertContains('<link rel="dns-prefetch" href="//emblemsbf.com">', $response->getContent());
-        $this->assertContains('<link rel="dns-prefetch" href="//code.jquery.com">', $response->getContent());
-        $this->assertContains('<link rel="dns-prefetch" href="//www.google-analytics.com">', $response->getContent());
+        $this->assertStringContainsString('<link rel="dns-prefetch" href="//github.com">', $response->getContent());
+        $this->assertStringContainsString('<link rel="dns-prefetch" href="//browsehappy.com">', $response->getContent());
+        $this->assertStringContainsString('<link rel="dns-prefetch" href="//emblemsbf.com">', $response->getContent());
+        $this->assertStringContainsString('<link rel="dns-prefetch" href="//code.jquery.com">', $response->getContent());
+        $this->assertStringContainsString('<link rel="dns-prefetch" href="//www.google-analytics.com">', $response->getContent());
     }
 }

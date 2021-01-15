@@ -10,10 +10,11 @@ abstract class TestCase extends Orchestra
 {
     protected $html;
     protected $middleware;
+    protected $request;
 
     abstract protected function getMiddleware();
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -36,7 +37,7 @@ abstract class TestCase extends Orchestra
     protected function getNext()
     {
         $response = (new \Illuminate\Http\Response($this->html));
-        return function ($request) use ($response) {
+        return function () use ($response) {
             return $response;
         };
     }

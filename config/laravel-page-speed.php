@@ -56,5 +56,4 @@ return [
         '*.m4v',
         '*.torrent'
     ],
-
 ];

@@ -16,13 +16,13 @@ class RemoveQuotesTest extends TestCase
     {
         $response = $this->middleware->handle($this->request, $this->getNext());
 
-        $this->assertContains('<link rel="apple-touch-icon" href="icon.png">', $response->getContent());
-        $this->assertContains('<meta charset=utf-8>', $response->getContent());
-        $this->assertContains('<meta name=viewport content="width=device-width, initial-scale=1">', $response->getContent());
-        $this->assertContains('<img src=http://emblemsbf.com/img/18346.jpg width=250 style="height:300px; padding:10px" >', $response->getContent());
-        $this->assertContains('<img src=/images/1000coin.png>', $response->getContent());
-        $this->assertContains('<vue-component :src="\'src\'" :type="\'type\'" :width="200"></vue-component>', $response->getContent());
-        $this->assertContains('<img src="tile whitespace.png" width=250 style="height:300px; padding:10px">', $response->getContent());
-        $this->assertContains('<input type=text name="name with spaces" value="name with spaces" width=100%>', $response->getContent());
+        $this->assertStringContainsString('<link rel="apple-touch-icon" href="icon.png">', $response->getContent());
+        $this->assertStringContainsString('<meta charset=utf-8>', $response->getContent());
+        $this->assertStringContainsString('<meta name=viewport content="width=device-width, initial-scale=1">', $response->getContent());
+        $this->assertStringContainsString('<img src=http://emblemsbf.com/img/18346.jpg width=250 style="height:300px; padding:10px" >', $response->getContent());
+        $this->assertStringContainsString('<img src=/images/1000coin.png>', $response->getContent());
+        $this->assertStringContainsString('<vue-component :src="\'src\'" :type="\'type\'" :width="200"></vue-component>', $response->getContent());
+        $this->assertStringContainsString('<img src="tile whitespace.png" width=250 style="height:300px; padding:10px">', $response->getContent());
+        $this->assertStringContainsString('<input type=text name="name with spaces" value="name with spaces" width=100%>', $response->getContent());
     }
 }

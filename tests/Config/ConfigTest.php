@@ -5,9 +5,21 @@ namespace RenatoMarinho\LaravelPageSpeed\Test\Config;
 use Illuminate\Http\Request;
 use RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
+use Mockery as m;
 
 class ConfigTest extends TestCase
 {
+    /**
+     * Clean up the testing environment before the next test.
+     *
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        m::close();
+    }
+
     protected function getMiddleware()
     {
         $this->middleware = new TrimUrls();
@@ -15,25 +27,23 @@ class ConfigTest extends TestCase
 
     public function testDisableFlag()
     {
-        config(['laravel-page-speed.enable' => false]);
+        $middleware = $this->mockMiddlewareWithEnableFalse();
+        $response = $middleware->handle($this->request, $this->getNext());
 
-        $response = $this->middleware->handle($this->request, $this->getNext());
-
-        $this->assertContains("https://", $response->getContent());
-        $this->assertContains("http://", $response->getContent());
-        $this->assertContains("https://code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
+        $this->assertStringContainsString("https://", $response->getContent());
+        $this->assertStringContainsString("http://", $response->getContent());
+        $this->assertStringContainsString("https://code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
     }
 
 
     public function testEnableIsNull()
     {
-        config(['laravel-page-speed.enable' => null]);
+        $middleware = $this->mockMiddlewareWithEnableNull();
+        $response = $middleware->handle($this->request, $this->getNext());
 
-        $response = $this->middleware->handle($this->request, $this->getNext());
-
-        $this->assertContains("//", $response->getContent());
-        $this->assertContains("//", $response->getContent());
-        $this->assertContains("//code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
+        $this->assertStringContainsString("//", $response->getContent());
+        $this->assertStringContainsString("//", $response->getContent());
+        $this->assertStringContainsString("//code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
     }
 
     public function testSkipRoute()
@@ -42,7 +52,7 @@ class ConfigTest extends TestCase
 
         $request = Request::create('https://foo/bar/downloads/100', 'GET');
 
-        $response = $this->middleware->handle($request, $this->getNext($request));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertEquals($this->html, $response->getContent());
     }
@@ -53,7 +63,7 @@ class ConfigTest extends TestCase
 
         $request = Request::create('https://foo/bar/downloads3/100', 'GET');
 
-        $response = $this->middleware->handle($request, $this->getNext($request));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertNotEquals($this->html, $response->getContent());
     }
@@ -64,7 +74,7 @@ class ConfigTest extends TestCase
 
         $request = Request::create('https://foo/bar/test.pdf', 'GET');
 
-        $response = $this->middleware->handle($request, $this->getNext($request));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertEquals($this->html, $response->getContent());
     }
@@ -75,8 +85,45 @@ class ConfigTest extends TestCase
 
         $request = Request::create('https://foo/bar/test.php', 'GET');
 
-        $response = $this->middleware->handle($request, $this->getNext($request));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertNotEquals($this->html, $response->getContent());
+    }
+
+    public function testWontReadEnableConfigMoreThanOnce()
+    {
+        $pageSpeed = m::mock(TrimUrls::class)
+                        ->shouldAllowMockingProtectedMethods()
+                        ->makePartial();
+
+        config(['laravel-page-speed.enable' => false]);
+
+        $this->assertTrue($pageSpeed->isEnable());
+    }
+
+    protected function mockMiddlewareWithEnableNull()
+    {
+        $mock = m::mock(TrimUrls::class)
+                 ->shouldAllowMockingProtectedMethods()
+                 ->makePartial();
+
+        $mock->shouldReceive('isEnable')
+             ->once()
+             ->andReturnNull();
+
+        return $mock;
+    }
+
+    protected function mockMiddlewareWithEnableFalse()
+    {
+        $mock = m::mock(TrimUrls::class)
+                 ->shouldAllowMockingProtectedMethods()
+                 ->makePartial();
+
+        $mock->shouldReceive('isEnable')
+             ->once()
+             ->andReturnFalse();
+
+        return $mock;
     }
 }

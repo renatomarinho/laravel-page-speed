@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 abstract class PageSpeed
 {
+    protected static $isEnabled;
+
     /**
      * Apply rules.
      *
@@ -56,8 +58,13 @@ abstract class PageSpeed
      */
     protected function isEnable()
     {
-        $enable = config('laravel-page-speed.enable');
-        return (is_null($enable))?true: (boolean) $enable;
+        if (! is_null(static::$isEnabled)) {
+            return static::$isEnabled;
+        }
+
+        static::$isEnabled = (bool) config('laravel-page-speed.enable', true);
+
+        return static::$isEnabled;
     }
 
     /**
@@ -69,9 +76,6 @@ abstract class PageSpeed
      */
     protected function shouldProcessPageSpeed($request, $response)
     {
-        $patterns = config('laravel-page-speed.skip');
-        $patterns = (is_null($patterns))?[]: $patterns;
-
         if (! $this->isEnable()) {
             return false;
         }
@@ -81,8 +85,10 @@ abstract class PageSpeed
         }
 
         if ($response instanceof StreamedResponse) {
-           return false;
+            return false;
         }
+
+        $patterns = config('laravel-page-speed.skip', []);
 
         foreach ($patterns as $pattern) {
             if ($request->is($pattern)) {
@@ -91,5 +97,44 @@ abstract class PageSpeed
         }
 
         return true;
+    }
+
+    /**
+     * Match all occurrences of the html tags given
+     *
+     * @param array  $tags   Html tags to match in the given buffer
+     * @param string $buffer Middleware response buffer
+     *
+     * @return array $matches Html tags found in the buffer
+     */
+    protected function matchAllHtmlTag(array $tags, string $buffer): array
+    {
+        $tags = '('.implode('|', $tags).')';
+
+        preg_match_all("/\<\s*{$tags}[^>]*\>((.|\n)*?)\<\s*\/\s*{$tags}\>/", $buffer, $matches);
+        return $matches;
+    }
+
+    /**
+     * Replace occurrences of regex pattern inside of given HTML tags
+     *
+     * @param array  $tags    Html tags to match and run regex to replace occurrences
+     * @param string $regex   Regex rule to match on the given HTML tags
+     * @param string $replace Content to replace
+     * @param string $buffer  Middleware response buffer
+     *
+     * @return string $buffer Middleware response buffer
+     */
+    protected function replaceInsideHtmlTags(array $tags, string $regex, string $replace, string $buffer): string
+    {
+        foreach ($this->matchAllHtmlTag($tags, $buffer)[0] as $tagMatched) {
+            preg_match_all($regex, $tagMatched, $tagContentsMatchedToReplace);
+
+            foreach ($tagContentsMatchedToReplace[0] as $tagContentReplace) {
+                $buffer = str_replace($tagContentReplace, $replace, $buffer);
+            }
+        }
+
+        return $buffer;
     }
 }
