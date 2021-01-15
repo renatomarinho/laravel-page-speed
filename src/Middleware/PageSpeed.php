@@ -85,7 +85,7 @@ abstract class PageSpeed
         }
 
         if ($response instanceof StreamedResponse) {
-           return false;
+            return false;
         }
 
         $patterns = config('laravel-page-speed.skip', []);

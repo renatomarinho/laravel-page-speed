@@ -3,21 +3,21 @@
 </p>
 
 <p align="center">
-<a href="https://gitscrum.com"><img src="https://site.gitscrum.com/badges/project.svg?project=gitscrum/bulls-eye-gitscrum-37" alt="GitScrum"></a>
-<a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/license" alt="License"></a>
+<a href="https://travis-ci.org/renatomarinho/laravel-page-speed"><img src="https://travis-ci.org/renatomarinho/laravel-page-speed.svg?branch=master" alt="Build Status"></a>
 <a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/version" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/license" alt="License"></a>
 </p>
 
 # Laravel Page Speed
 
-### Simple package to minify HTML output on demand which results in a 35%+ optimization.
+Simple package to minify HTML output on demand which results in a 35%+ optimization. Laravel Page Speed was created by [Renato Marinho][link-author], and currently maintained by [João Roberto P. Borges][link-maintainer], [Lucas Mesquita Borges][link-maintainer-2] and [Renato Marinho][link-author].
 
 ## Installation
 
 > **Requires:**
-- **[PHP 7.1.3+](https://php.net/releases/)**
-- **[Laravel 5.5+](https://github.com/laravel/laravel)**
+- **[PHP 7.2.5+](https://php.net/releases/)**
+- **[Laravel 6.0+](https://github.com/laravel/laravel)**
 
 You can install the package via composer:
 
@@ -44,8 +44,8 @@ protected $middleware = [
     \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
-    \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
-    \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
+    //\RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class, 
+    //\RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
     \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
 ]
@@ -89,7 +89,7 @@ The **InsertDNSPrefetch::class** filter Injects <link rel="dns-prefetch" href="/
 
 DNS resolution time varies from <1ms for locally cached results, to hundreds of milliseconds due to the cascading nature of DNS. This can contribute significantly towards total page load time. This filter reduces DNS lookup time by providing hints to the browser at the beginning of the HTML, which allows the browser to pre-resolve DNS for resources on the page.
 
-### \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
+ ### ⚠️ \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
 
 The **TrimUrls::class** filter trims URLs by resolving them by making them relative to the base URL for the page.
 
@@ -140,18 +140,6 @@ By default this field comes configured with some options, so feel free to config
 
 > *Notice*: This package skip automatically 'binary' and 'streamed' responses. See [File Downloads][link-file-download].
 
-### Disable Middleware
-
-All middlewares operate with Auto-Discover. However, there are times when you do not want to use a specific middleware.
-
-```php
-//config/laravel-page-speed.php
-
-'disabled_middlewares' => [
-    \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
-];
-```
-
 ## Testing
 
 ```sh
@@ -162,10 +150,8 @@ $ composer test
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Credits
+## Contributors
 
-- [Renato Marinho][link-author]
-- [João Roberto P. Borges][link-maintainer]
 - [Caneco](https://twitter.com/caneco) (for the logo)
 - [All Contributors][link-contributors]
 
@@ -181,6 +167,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-after]: https://i.imgur.com/IKWKLkL.png
 [link-author]: https://github.com/renatomarinho
 [link-maintainer]: https://github.com/joaorobertopb
+[link-maintainer-2]: https://github.com/lucasMesquitaBorges
 [link-contributors]: ../../contributors
 [link-file-download]: https://laravel.com/docs/6.0/responses#file-downloads
 [link-package-discovery]: https://laravel.com/docs/6.0/packages#package-discovery
