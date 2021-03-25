@@ -2,10 +2,14 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
+use RenatoMarinho\LaravelPageSpeed\Entities\HtmlSpecs;
+
 class RemoveQuotes extends PageSpeed
 {
     public function apply($buffer)
     {
+        $buffer = $this->replaceInsideHtmlTags(HtmlSpecs::voidElements(), '/\/>/', '>', $buffer);
+
         $replace = [
             '/ src="(.\S*?)"/' => ' src=$1',
             '/ width="(.\S*?)"/' => ' width=$1',
@@ -16,7 +20,6 @@ class RemoveQuotes extends PageSpeed
             '/ border="(.\S*?)"/' => ' border=$1',
             '/ crossorigin="(.\S*?)"/' => ' crossorigin=$1',
             '/ type="(.\S*?)"/' => ' type=$1',
-            '/\/>/' => '>',
         ];
 
         return $this->replace($replace, $buffer);
