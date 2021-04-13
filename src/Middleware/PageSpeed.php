@@ -94,6 +94,9 @@ abstract class PageSpeed
             if ($request->is($pattern)) {
                 return false;
             }
+            if ($request->has($pattern)) {
+                return false;
+            }
         }
 
         return true;
