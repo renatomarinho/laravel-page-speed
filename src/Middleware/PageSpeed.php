@@ -3,6 +3,7 @@
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
+use RenatoMarinho\LaravelPageSpeed\Entities\HtmlSpecs;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -109,10 +110,26 @@ abstract class PageSpeed
      */
     protected function matchAllHtmlTag(array $tags, string $buffer): array
     {
-        $tags = '('.implode('|', $tags).')';
+        $voidTags = array_intersect($tags, HtmlSpecs::voidElements());
+        $normalTags = array_diff($tags, $voidTags);
 
-        preg_match_all("/\<\s*{$tags}[^>]*\>((.|\n)*?)\<\s*\/\s*{$tags}\>/", $buffer, $matches);
-        return $matches;
+        return array_merge(
+            $this->matchTags($voidTags, '/\<\s*(%tags)[^>]*\>/', $buffer),
+            $this->matchTags($normalTags, '/\<\s*(%tags)[^>]*\>((.|\n)*?)\<\s*\/\s*(%tags)\>/', $buffer)
+        );
+    }
+
+    protected function matchTags(array $tags, string $pattern, string $buffer): array
+    {
+        if (empty($tags)) {
+            return [];
+        }
+
+        $normalizedPattern = str_replace('%tags', implode('|', $tags), $pattern);
+
+        preg_match_all($normalizedPattern, $buffer, $matches);
+
+        return $matches[0];
     }
 
     /**
@@ -127,12 +144,11 @@ abstract class PageSpeed
      */
     protected function replaceInsideHtmlTags(array $tags, string $regex, string $replace, string $buffer): string
     {
-        foreach ($this->matchAllHtmlTag($tags, $buffer)[0] as $tagMatched) {
-            preg_match_all($regex, $tagMatched, $tagContentsMatchedToReplace);
+        foreach ($this->matchAllHtmlTag($tags, $buffer) as $tagMatched) {
+            preg_match_all($regex, $tagMatched, $contentsMatched);
 
-            foreach ($tagContentsMatchedToReplace[0] as $tagContentReplace) {
-                $buffer = str_replace($tagContentReplace, $replace, $buffer);
-            }
+            $tagAfterReplace = str_replace($contentsMatched[0], $replace, $tagMatched);
+            $buffer = str_replace($tagMatched, $tagAfterReplace, $buffer);
         }
 
         return $buffer;
