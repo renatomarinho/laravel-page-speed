@@ -125,5 +125,10 @@ class RemoveCommentsTest extends TestCase
         $this->assertStringContainsString("console.log('Laravel');", $this->response->getContent());
         $this->assertStringContainsString("console.log('Page');", $this->response->getContent());
         $this->assertStringContainsString("console.log('Speed!');", $this->response->getContent());
+
+        $this->assertStringContainsString(
+            '<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>',
+            $this->response->getContent()
+        );
     }
 }
