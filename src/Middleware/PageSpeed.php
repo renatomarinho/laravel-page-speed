@@ -92,9 +92,10 @@ abstract class PageSpeed
         $patterns = config('laravel-page-speed.skip', []);
 
         foreach ($patterns as $pattern) {
-            if ($request->is($pattern)) {
+            if ($request->is($pattern)||$request->has($pattern)) {
                 return false;
             }
+
         }
 
         return true;
