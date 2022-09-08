@@ -109,7 +109,7 @@ Defers the execution of javascript in the HTML.
 
 ## Configuration
 
-After installing package, you may need to configure some options.
+After installing the package, you may need to configure some options.
 
 ### Disable Service
 
@@ -136,7 +136,7 @@ You would probably like to configure the package to skip some routes.
 ];
 ```
 
-By default this field comes configured with some options, so feel free to configure according to your needs...
+By default this field comes configured with some options, so feel free to configure it according to your needs...
 
 > *Notice*: This package skip automatically 'binary' and 'streamed' responses. See [File Downloads][link-file-download].
 
