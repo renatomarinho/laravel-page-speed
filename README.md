@@ -61,7 +61,7 @@ The filter reduces the transfer size of HTML files by removing the comments. Dep
 ### \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class
 
 The **CollapseWhitespace::class** filter reduces bytes transmitted in an HTML file by removing unnecessary whitespace.
-This middleware invoke **RemoveComments::class** filter before executation.
+This middleware invoke **RemoveComments::class** filter before execution.
 
 > **Note**: Do not register the "RemoveComments::class" filter with it. Because it will be called automatically by "CollapseWhitespace::class"
 
