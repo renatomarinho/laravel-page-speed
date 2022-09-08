@@ -138,7 +138,7 @@ You would probably like to configure the package to skip some routes.
 
 By default this field comes configured with some options, so feel free to configure it according to your needs...
 
-> *Notice*: This package skip automatically 'binary' and 'streamed' responses. See [File Downloads][link-file-download].
+> *Notice*: This package automatically skips 'binary' and 'streamed' responses. See [File Downloads][link-file-download].
 
 ## Testing
 
