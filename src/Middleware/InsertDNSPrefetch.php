@@ -22,10 +22,10 @@ class InsertDNSPrefetch extends PageSpeed
             );
 
             return "<link rel=\"dns-prefetch\" href=\"//{$domain[0]}\">";
-        })->unique()->implode("\n");
+        })->unique()->implode("");
 
         $replace = [
-            '#<head>(.*?)#' => "<head>\n{$dnsPrefetch}"
+            '#<head>(.*?)#' => "<head>{$dnsPrefetch}"
         ];
 
         return $this->replace($replace, $buffer);
