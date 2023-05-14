@@ -42,7 +42,7 @@ class InlineCss extends PageSpeed
         $injectStyle = implode(' ', $this->inline);
 
         $replace = [
-            '#</head>(.*?)#' => "\n<style>{$injectStyle}</style>\n</head>"
+            '#</head>(.*?)#' => "<style>{$injectStyle}</style></head>"
         ];
 
         $this->html = $this->replace($replace, $this->html);
