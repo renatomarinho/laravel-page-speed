@@ -14,6 +14,10 @@ class InsertDNSPrefetch extends PageSpeed
         );
 
         $dnsPrefetch = collect($matches[0])->map(function ($item) {
+            if (str_contains($item[0], 'debugbar')) {
+                return;
+            }
+
             $domain = (new TrimUrls)->apply($item[0]);
             $domain = explode(
                 '/',
