@@ -2,10 +2,16 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
+use Exception;
+
 class CollapseWhitespace extends PageSpeed
 {
     public function apply($buffer)
     {
+        if (str_contains($buffer, 'Error:')) {
+            return $buffer;
+        }
+
         $replace = [
             "/\n([\S])/" => '$1',
             "/\r/" => '',
