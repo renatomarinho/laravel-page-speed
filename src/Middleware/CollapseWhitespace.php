@@ -11,7 +11,7 @@ class CollapseWhitespace extends PageSpeed
         if (str_contains($buffer, 'Error:')) {
             return $buffer;
         }
-        
+
         if (in_array(request()?->host(), config('laravel-page-speed.domain'), true)) {
             return $this->replace([], $this->removeComments($buffer));
         }
