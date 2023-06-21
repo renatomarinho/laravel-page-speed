@@ -14,6 +14,9 @@ class InsertDNSPrefetch extends PageSpeed
         );
 
         $dnsPrefetch = collect($matches[0])->map(function ($item) {
+            if (str_contains($item[0], 'debugbar')) {
+                return;
+            }
 
             $domain = (new TrimUrls)->apply($item[0]);
             $domain = explode(
@@ -21,11 +24,15 @@ class InsertDNSPrefetch extends PageSpeed
                 str_replace('//', '', $domain)
             );
 
-            return "<link rel=\"dns-prefetch\" href=\"//{$domain[0]}\">";
-        })->unique()->implode("\n");
+            if (str_contains(@$domain[0], 'www.schema.org')) {
+                $domain[0] = 'www.schema.org';
+            }
+
+            return "<link rel=\"preconnect\" href=\"//{$domain[0]}\" crossorigin><link rel=\"dns-prefetch\" href=\"//{$domain[0]}\">";
+        })->unique()->implode('');
 
         $replace = [
-            '#<head>(.*?)#' => "<head>\n{$dnsPrefetch}"
+            '#<head>(.*?)#' => "<head>{$dnsPrefetch}",
         ];
 
         return $this->replace($replace, $buffer);
