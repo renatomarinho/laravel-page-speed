@@ -1,5 +1,5 @@
 {
-    "name": "renatomarinho/laravel-page-speed",
+    "name": "dotninth/laravel-page-speed",
     "description": "Laravel Page Speed",
     "keywords": [
         "laravel",
@@ -13,6 +13,10 @@
         {
             "name": "Renato Marinho",
             "email": "renato.marinho@s2move.com"
+        },
+        {
+            "name": "Dominik Lokkhart",
+            "email": "lokkhart@yard77.dev"
         }
     ],
     "require": {
