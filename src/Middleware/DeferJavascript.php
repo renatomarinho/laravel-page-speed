@@ -6,7 +6,7 @@ namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 class DeferJavascript extends PageSpeed
 {
-    public function apply($buffer)
+    public function apply(string $buffer): string
     {
         $replace = [
             '/<script(?=[^>]+src[^>]+)((?![^>]+defer|data-pagespeed-no-defer[^>]+)[^>]+)/i' => '<script $1 defer',

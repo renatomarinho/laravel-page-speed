@@ -8,7 +8,7 @@ use RenatoMarinho\LaravelPageSpeed\Entities\HtmlSpecs;
 
 class RemoveQuotes extends PageSpeed
 {
-    public function apply($buffer)
+    public function apply(string $buffer): string
     {
         $buffer = $this->replaceInsideHtmlTags(HtmlSpecs::voidElements(), '/\/>/', '>', $buffer);
 

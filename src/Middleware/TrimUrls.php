@@ -6,7 +6,7 @@ namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 class TrimUrls extends PageSpeed
 {
-    public function apply($buffer)
+    public function apply(string $buffer): string
     {
         $replace = [
             '/https:/' => '',

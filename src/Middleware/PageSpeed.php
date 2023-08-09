@@ -5,29 +5,27 @@ declare(strict_types=1);
 namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use RenatoMarinho\LaravelPageSpeed\Entities\HtmlSpecs;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 abstract class PageSpeed
 {
-    protected static $isEnabled;
+    protected static bool $isEnabled;
 
     /**
      * Apply rules.
-     *
-     * @param  string  $buffer
-     * @return string
      */
-    abstract public function apply($buffer);
+    abstract public function apply(string $buffer): string;
 
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response $response
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
 

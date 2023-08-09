@@ -10,11 +10,8 @@ class InsertDNSPrefetch extends PageSpeed
 {
     /**
      * Apply the DNS prefetch middleware to the buffer.
-     *
-     * @param  string  $buffer
-     * @return string
      */
-    public function apply($buffer)
+    public function apply(string $buffer): string
     {
         $matches = $this->extractUrls($buffer);
         $dnsPrefetch = $this->generateDnsPrefetchLinks($matches);

@@ -34,7 +34,7 @@ class InlineCss extends PageSpeed
      * @param  string  $buffer the HTML content
      * @return string the transformed HTML content
      */
-    public function apply($buffer): string
+    public function apply(string $buffer): string
     {
         $this->html = $buffer;
 
