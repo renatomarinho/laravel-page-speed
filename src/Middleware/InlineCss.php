@@ -8,31 +8,23 @@ class InlineCss extends PageSpeed
 {
     /**
      * The HTML content.
-     *
-     * @var string
      */
-    private $html = '';
+    private string $html = '';
 
     /**
      * The class attributes extracted from the style tags.
-     *
-     * @var array
      */
-    private $class = [];
+    private array $class = [];
 
     /**
      * The styles extracted from the style tags.
-     *
-     * @var array
      */
-    private $style = [];
+    private array $style = [];
 
     /**
      * The inline CSS styles to be injected.
-     *
-     * @var array
      */
-    private $inline = [];
+    private array $inline = [];
 
     /**
      * Apply the inline CSS transformation to the HTML content.
@@ -40,7 +32,7 @@ class InlineCss extends PageSpeed
      * @param  string  $buffer the HTML content
      * @return string the transformed HTML content
      */
-    public function apply($buffer)
+    public function apply($buffer): string
     {
         $this->html = $buffer;
 
@@ -48,17 +40,15 @@ class InlineCss extends PageSpeed
 
         $this->class = collect($matches[1])->mapWithKeys(function ($item) {
             return ['page_speed_' . Str::random() => $item[0]];
-        })->unique();
+        })->unique()->toArray();
 
         return $this->injectStyle()->injectClass()->fixHTML()->html;
     }
 
     /**
      * Inject the inline CSS styles into the HTML head section.
-     *
-     * @return $this
      */
-    private function injectStyle()
+    private function injectStyle(): self
     {
         collect($this->class)->each(function ($attributes, $class) {
             $this->inline[] = ".{$class} { {$attributes} }";
@@ -76,10 +66,8 @@ class InlineCss extends PageSpeed
 
     /**
      * Inject the class attributes into the HTML tags.
-     *
-     * @return $this
      */
-    private function injectClass()
+    private function injectClass(): self
     {
         collect($this->style)->each(function ($item) {
             $this->html = $this->replace(
@@ -93,10 +81,8 @@ class InlineCss extends PageSpeed
 
     /**
      * Fix the HTML tags with multiple class attributes.
-     *
-     * @return $this
      */
-    private function fixHTML()
+    private function fixHTML(): self
     {
         $newHTML = [];
         $tmp = explode('<', $this->html);
@@ -114,9 +100,9 @@ class InlineCss extends PageSpeed
     /**
      * Replaces multiple class attributes in a given string.
      *
-     * @param  array  $matches An array of class attributes to be replaced.
-     * @param  string  $value The original string to be modified.
-     * @return string The modified string with replaced class attributes.
+     * @param  array  $matches an array of class attributes to be replaced
+     * @param  string  $value   the original string to be modified
+     * @return string the modified string with replaced class attributes
      */
     private function replaceMultipleClassAttributes(array $matches, string $value): string
     {
@@ -131,8 +117,8 @@ class InlineCss extends PageSpeed
     /**
      * Retrieves an array of class attributes from a given string.
      *
-     * @param  string  $value The string from which to extract class attributes.
-     * @return array An array of class attributes.
+     * @param  string  $value the string from which to extract class attributes
+     * @return array an array of class attributes
      */
     private function getClassAttributes(string $value): array
     {
