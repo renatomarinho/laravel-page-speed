@@ -61,7 +61,7 @@ class InlineCss extends PageSpeed
     private function injectStyle()
     {
         collect($this->class)->each(function ($attributes, $class) {
-            $this->inline[] = ".{$class}{ {$attributes} }";
+            $this->inline[] = ".{$class} { {$attributes} }";
             $this->style[] = ['class' => $class, 'attributes' => preg_quote($attributes, '/')];
         });
 
@@ -100,27 +100,44 @@ class InlineCss extends PageSpeed
     {
         $newHTML = [];
         $tmp = explode('<', $this->html);
-        $replaceClass = ['/class="(.*?)"/' => ''];
 
         foreach ($tmp as $value) {
-            preg_match_all('/class="(.*?)"/', $value, $matches);
-
-            if (count($matches[1]) > 1) {
-                $newHTML[] = str_replace(
-                    '  ',
-                    ' ',
-                    $this->replace(
-                        ['/>/' => 'class="' . implode(' ', $matches[1]) . '">'],
-                        $this->replace($replaceClass, $value)
-                    )
-                );
-            } else {
-                $newHTML[] = $value;
-            }
+            $matches = $this->getClassAttributes($value);
+            $newHTML[] = count($matches) > 1 ? $this->replaceMultipleClassAttributes($matches, $value) : $value;
         }
 
         $this->html = implode('<', $newHTML);
 
         return $this;
+    }
+
+    /**
+     * Replaces multiple class attributes in a given string.
+     *
+     * @param  array  $matches An array of class attributes to be replaced.
+     * @param  string  $value The original string to be modified.
+     * @return string The modified string with replaced class attributes.
+     */
+    private function replaceMultipleClassAttributes(array $matches, string $value): string
+    {
+        $class = implode(' ', $matches);
+        $value = $this->replace(['/class="(.*?)"/' => ''], $value);
+        $value = $this->replace(['/>/' => 'class="' . $class . '">'], $value);
+        $value = str_replace('  ', ' ', $value);
+
+        return $value;
+    }
+
+    /**
+     * Retrieves an array of class attributes from a given string.
+     *
+     * @param  string  $value The string from which to extract class attributes.
+     * @return array An array of class attributes.
+     */
+    private function getClassAttributes(string $value): array
+    {
+        preg_match_all('/(?<!:)class="(.*?)"/', $value, $matches);
+
+        return $matches[1];
     }
 }
