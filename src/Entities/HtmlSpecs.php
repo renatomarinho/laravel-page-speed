@@ -6,6 +6,9 @@ namespace RenatoMarinho\LaravelPageSpeed\Entities;
 
 class HtmlSpecs
 {
+    /**
+     * Return an array of void elements
+     */
     public static function voidElements(): array
     {
         return [
