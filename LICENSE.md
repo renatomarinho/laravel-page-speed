@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2017 Renato Marinho <renato.marinho@s2move.com>
+Copyright (c) 2023 Dominik Lokkhart <lokkhart@yard77.dev>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
