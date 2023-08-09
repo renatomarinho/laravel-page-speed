@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RenatoMarinho\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelPageSpeed\Middleware;
 
 use Illuminate\Support\Collection;
 

@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "RenatoMarinho\\LaravelPageSpeed\\": "src/"
+            "DotNinth\\LaravelPageSpeed\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RenatoMarinho\\LaravelPageSpeed\\Test\\": "tests"
+            "DotNinth\\LaravelPageSpeed\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -50,7 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RenatoMarinho\\LaravelPageSpeed\\ServiceProvider"
+                "DotNinth\\LaravelPageSpeed\\ServiceProvider"
             ]
         }
     }

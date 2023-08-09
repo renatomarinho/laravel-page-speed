@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RenatoMarinho\LaravelPageSpeed\Entities;
+namespace DotNinth\LaravelPageSpeed\Entities;
 
 class HtmlSpecs
 {

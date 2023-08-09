@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RenatoMarinho\LaravelPageSpeed;
+namespace DotNinth\LaravelPageSpeed;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RenatoMarinho\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelPageSpeed\Middleware;
 
 use Closure;
+use DotNinth\LaravelPageSpeed\Entities\HtmlSpecs;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use RenatoMarinho\LaravelPageSpeed\Entities\HtmlSpecs;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
