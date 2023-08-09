@@ -11,8 +11,8 @@ class CollapseWhitespace extends PageSpeed
             "/\r/" => '',
             "/\n/" => '',
             "/\t/" => '',
-            "/ +/" => ' ',
-            "/> +</" => '><',
+            '/ +/' => ' ',
+            '/> +</' => '><',
         ];
 
         return $this->replace($replace, $this->removeComments($buffer));
@@ -20,6 +20,6 @@ class CollapseWhitespace extends PageSpeed
 
     protected function removeComments($buffer)
     {
-        return (new RemoveComments)->apply($buffer);
+        return (new RemoveComments())->apply($buffer);
     }
 }

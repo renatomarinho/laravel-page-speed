@@ -24,12 +24,12 @@ class RemoveCommentsTest extends TestCase
     public function testRemoveHtmlComments()
     {
         $this->assertStringNotContainsString(
-            "<!-- Place favicon.ico in the root directory -->",
+            '<!-- Place favicon.ico in the root directory -->',
             $this->response->getContent()
         );
 
         $this->assertStringNotContainsString(
-            "<!-- Add your site or application content here -->",
+            '<!-- Add your site or application content here -->',
             $this->response->getContent()
         );
 
@@ -39,39 +39,39 @@ class RemoveCommentsTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            "<!--[if IE 8]> <html lang=\"en\" class=\"ie8 no-js\"> <![endif]-->",
+            '<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->',
             $this->response->getContent()
         );
 
         $this->assertStringContainsString(
-            "<!--[if IE 9]> <html lang=\"en\" class=\"ie9 no-js\"> <![endif]-->",
+            '<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->',
             $this->response->getContent()
         );
 
         $this->assertStringContainsString(
-            "<!--[if !IE]><!-->",
+            '<!--[if !IE]><!-->',
             $this->response->getContent()
         );
 
         $this->assertStringContainsString(
-            "<!--<![endif]-->",
+            '<!--<![endif]-->',
             $this->response->getContent()
         );
 
         $this->assertStringContainsString(
-            "<!--[if lte IE 9]>
-            <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->",
+            '<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->',
             $this->response->getContent()
         );
 
         $this->assertStringContainsString(
-            "<p>Hello! I am /* not a comment */ at HTML context!</p>",
+            '<p>Hello! I am /* not a comment */ at HTML context!</p>',
             $this->response->getContent()
         );
 
         $this->assertStringContainsString(
-            "<p>Hello! I am // not a comment at HTML context!</p>",
+            '<p>Hello! I am // not a comment at HTML context!</p>',
             $this->response->getContent()
         );
     }
@@ -79,14 +79,14 @@ class RemoveCommentsTest extends TestCase
     public function testRemoveCssComments()
     {
         $this->assertStringNotContainsString(
-            "/* before - css inline comment*/color: black;/* after - css inline comment*/",
+            '/* before - css inline comment*/color: black;/* after - css inline comment*/',
             $this->response->getContent()
         );
 
         $this->assertStringNotContainsString(
-            "/* This is
+            '/* This is
                 a multi-line
-                css comment */",
+                css comment */',
             $this->response->getContent()
         );
 
@@ -102,18 +102,18 @@ class RemoveCommentsTest extends TestCase
     public function testRemoveJsComments()
     {
         $this->assertStringNotContainsString(
-            "// Single Line Comment",
+            '// Single Line Comment',
             $this->response->getContent()
         );
 
         $this->assertStringNotContainsString(
-            "/*
+            '/*
 
                 Multi-line
 
                 Comment
 
-            */",
+            */',
             $this->response->getContent()
         );
 

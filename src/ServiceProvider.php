@@ -19,7 +19,7 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/laravel-page-speed.php' => config_path('laravel-page-speed.php'),
+            __DIR__ . '/../config/laravel-page-speed.php' => config_path('laravel-page-speed.php'),
         ]);
     }
 
@@ -28,6 +28,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/laravel-page-speed.php', 'laravel-page-speed.php');
+        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-page-speed.php', 'laravel-page-speed.php');
     }
 }

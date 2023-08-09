@@ -4,8 +4,8 @@ namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 use Closure;
 use RenatoMarinho\LaravelPageSpeed\Entities\HtmlSpecs;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 abstract class PageSpeed
 {
@@ -14,7 +14,7 @@ abstract class PageSpeed
     /**
      * Apply rules.
      *
-     * @param string $buffer
+     * @param  string  $buffer
      * @return string
      */
     abstract public function apply($buffer);
@@ -22,8 +22,7 @@ abstract class PageSpeed
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response $response
      */
     public function handle($request, Closure $next)
@@ -43,8 +42,7 @@ abstract class PageSpeed
     /**
      * Replace content response.
      *
-     * @param  array $replace
-     * @param  string $buffer
+     * @param  string  $buffer
      * @return string
      */
     protected function replace(array $replace, $buffer)
@@ -71,8 +69,8 @@ abstract class PageSpeed
     /**
      * Should Process
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Illuminate\Http\Response $response
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Response  $response
      * @return bool
      */
     protected function shouldProcessPageSpeed($request, $response)
@@ -103,9 +101,8 @@ abstract class PageSpeed
     /**
      * Match all occurrences of the html tags given
      *
-     * @param array  $tags   Html tags to match in the given buffer
-     * @param string $buffer Middleware response buffer
-     *
+     * @param  array  $tags   Html tags to match in the given buffer
+     * @param  string  $buffer Middleware response buffer
      * @return array $matches Html tags found in the buffer
      */
     protected function matchAllHtmlTag(array $tags, string $buffer): array
@@ -135,11 +132,10 @@ abstract class PageSpeed
     /**
      * Replace occurrences of regex pattern inside of given HTML tags
      *
-     * @param array  $tags    Html tags to match and run regex to replace occurrences
-     * @param string $regex   Regex rule to match on the given HTML tags
-     * @param string $replace Content to replace
-     * @param string $buffer  Middleware response buffer
-     *
+     * @param  array  $tags    Html tags to match and run regex to replace occurrences
+     * @param  string  $regex   Regex rule to match on the given HTML tags
+     * @param  string  $replace Content to replace
+     * @param  string  $buffer  Middleware response buffer
      * @return string $buffer Middleware response buffer
      */
     protected function replaceInsideHtmlTags(array $tags, string $regex, string $replace, string $buffer): string

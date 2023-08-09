@@ -15,7 +15,7 @@ class InsertDNSPrefetch extends PageSpeed
 
         $dnsPrefetch = collect($matches[0])->map(function ($item) {
 
-            $domain = (new TrimUrls)->apply($item[0]);
+            $domain = (new TrimUrls())->apply($item[0]);
             $domain = explode(
                 '/',
                 str_replace('//', '', $domain)
@@ -25,7 +25,7 @@ class InsertDNSPrefetch extends PageSpeed
         })->unique()->implode("\n");
 
         $replace = [
-            '#<head>(.*?)#' => "<head>\n{$dnsPrefetch}"
+            '#<head>(.*?)#' => "<head>\n{$dnsPrefetch}",
         ];
 
         return $this->replace($replace, $buffer);

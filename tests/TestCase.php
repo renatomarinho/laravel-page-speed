@@ -3,13 +3,15 @@
 namespace RenatoMarinho\LaravelPageSpeed\Test;
 
 use Illuminate\Http\Request;
-use RenatoMarinho\LaravelPageSpeed\ServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use RenatoMarinho\LaravelPageSpeed\ServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
     protected $html;
+
     protected $middleware;
+
     protected $request;
 
     abstract protected function getMiddleware();
@@ -26,7 +28,7 @@ abstract class TestCase extends Orchestra
 
     private function getBoilerplateHTML()
     {
-        return file_get_contents(__DIR__ .'/Boilerplate/index.html');
+        return file_get_contents(__DIR__ . '/Boilerplate/index.html');
     }
 
     protected function getPackageProviders($app)
@@ -37,6 +39,7 @@ abstract class TestCase extends Orchestra
     protected function getNext()
     {
         $response = (new \Illuminate\Http\Response($this->html));
+
         return function () use ($response) {
             return $response;
         };
@@ -45,7 +48,7 @@ abstract class TestCase extends Orchestra
     /**
      * Set up the environment.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      */
     protected function getEnvironmentSetUp($app)
     {

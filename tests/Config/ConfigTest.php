@@ -3,16 +3,14 @@
 namespace RenatoMarinho\LaravelPageSpeed\Test\Config;
 
 use Illuminate\Http\Request;
+use Mockery as m;
 use RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls;
 use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
-use Mockery as m;
 
 class ConfigTest extends TestCase
 {
     /**
      * Clean up the testing environment before the next test.
-     *
-     * @return void
      */
     protected function tearDown(): void
     {
@@ -30,20 +28,19 @@ class ConfigTest extends TestCase
         $middleware = $this->mockMiddlewareWithEnableFalse();
         $response = $middleware->handle($this->request, $this->getNext());
 
-        $this->assertStringContainsString("https://", $response->getContent());
-        $this->assertStringContainsString("http://", $response->getContent());
-        $this->assertStringContainsString("https://code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
+        $this->assertStringContainsString('https://', $response->getContent());
+        $this->assertStringContainsString('http://', $response->getContent());
+        $this->assertStringContainsString('https://code.jquery.com/jquery-3.2.1.min.js', $response->getContent());
     }
-
 
     public function testEnableIsNull()
     {
         $middleware = $this->mockMiddlewareWithEnableNull();
         $response = $middleware->handle($this->request, $this->getNext());
 
-        $this->assertStringContainsString("//", $response->getContent());
-        $this->assertStringContainsString("//", $response->getContent());
-        $this->assertStringContainsString("//code.jquery.com/jquery-3.2.1.min.js", $response->getContent());
+        $this->assertStringContainsString('//', $response->getContent());
+        $this->assertStringContainsString('//', $response->getContent());
+        $this->assertStringContainsString('//code.jquery.com/jquery-3.2.1.min.js', $response->getContent());
     }
 
     public function testSkipRoute()
@@ -93,8 +90,8 @@ class ConfigTest extends TestCase
     public function testWontReadEnableConfigMoreThanOnce()
     {
         $pageSpeed = m::mock(TrimUrls::class)
-                        ->shouldAllowMockingProtectedMethods()
-                        ->makePartial();
+            ->shouldAllowMockingProtectedMethods()
+            ->makePartial();
 
         config(['laravel-page-speed.enable' => false]);
 
@@ -104,12 +101,12 @@ class ConfigTest extends TestCase
     protected function mockMiddlewareWithEnableNull()
     {
         $mock = m::mock(TrimUrls::class)
-                 ->shouldAllowMockingProtectedMethods()
-                 ->makePartial();
+            ->shouldAllowMockingProtectedMethods()
+            ->makePartial();
 
         $mock->shouldReceive('isEnable')
-             ->once()
-             ->andReturnNull();
+            ->once()
+            ->andReturnNull();
 
         return $mock;
     }
@@ -117,12 +114,12 @@ class ConfigTest extends TestCase
     protected function mockMiddlewareWithEnableFalse()
     {
         $mock = m::mock(TrimUrls::class)
-                 ->shouldAllowMockingProtectedMethods()
-                 ->makePartial();
+            ->shouldAllowMockingProtectedMethods()
+            ->makePartial();
 
         $mock->shouldReceive('isEnable')
-             ->once()
-             ->andReturnFalse();
+            ->once()
+            ->andReturnFalse();
 
         return $mock;
     }

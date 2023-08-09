@@ -2,14 +2,14 @@
 
 namespace RenatoMarinho\LaravelPageSpeed\Test\Middleware;
 
-use Mockery as m;
 use Illuminate\Http\Request;
-use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
-use Symfony\Component\HttpFoundation\StreamedResponse;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use RenatoMarinho\LaravelPageSpeed\Middleware\PageSpeed;
+use Mockery as m;
 use RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace;
+use RenatoMarinho\LaravelPageSpeed\Middleware\PageSpeed;
+use RenatoMarinho\LaravelPageSpeed\Test\TestCase;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ShouldNotProcessResponseTest extends TestCase
 {
@@ -22,8 +22,6 @@ class ShouldNotProcessResponseTest extends TestCase
 
     /**
      * Clean up the testing environment before the next test.
-     *
-     * @return void
      */
     protected function tearDown(): void
     {
@@ -114,7 +112,7 @@ class ShouldNotProcessResponseTest extends TestCase
     {
         return function ($request) {
             $response = new StreamedResponse(function () {
-                echo "I am Streamed";
+                echo 'I am Streamed';
             });
 
             $response->headers->set('Content-Disposition', $response->headers->makeDisposition(
@@ -135,12 +133,12 @@ class ShouldNotProcessResponseTest extends TestCase
     protected function mockMiddlewareWhichAllowsPageSpeedProcess()
     {
         $mock = m::mock(CollapseWhitespace::class)
-                 ->shouldAllowMockingProtectedMethods()
-                 ->makePartial();
+            ->shouldAllowMockingProtectedMethods()
+            ->makePartial();
 
         $mock->shouldReceive('shouldProcessPageSpeed')
-             ->once()
-             ->andReturn(true);
+            ->once()
+            ->andReturn(true);
 
         return $mock;
     }
