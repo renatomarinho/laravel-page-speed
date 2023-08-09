@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 abstract class PageSpeed
 {
-    protected static bool $isEnabled;
+    protected static $isEnabled;
 
     /**
      * Apply rules.
