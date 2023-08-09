@@ -13,17 +13,37 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 abstract class PageSpeed
 {
+    /**
+     * Regular expression pattern for void tags
+     */
+    const VOID_TAGS_PATTERN = '/\<\s*(%tags)[^>]*\>/';
+
+    /**
+     * Regular expression pattern for normal tags with content
+     */
+    const NORMAL_TAGS_PATTERN = '/\<\s*(%tags)[^>]*\>((.|\n)*?)\<\s*\/\s*(%tags)\>/';
+
+    /**
+     * Indicates if PageSpeed middleware is enabled or not
+     *
+     * @var bool|null
+     */
     protected static $isEnabled;
 
     /**
-     * Apply rules.
+     * Apply the PageSpeed transformations to the HTML buffer
+     *
+     * @param  string  $buffer The HTML buffer
+     * @return string The transformed HTML buffer
      */
     abstract public function apply(string $buffer): string;
 
     /**
-     * Handle an incoming request.
+     * Handle an incoming request
      *
-     * @return \Illuminate\Http\Response $response
+     * @param  \Illuminate\Http\Request  $request HTTP request
+     * @param  \Closure  $next The next middleware
+     * @return \Illuminate\Http\Response $response The response
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -40,22 +60,23 @@ abstract class PageSpeed
     }
 
     /**
-     * Replace content response.
+     * Replace patterns in the buffer using preg_replace
      *
-     * @param  string  $buffer
-     * @return string
+     * @param  array  $replace The patterns to replace
+     * @param  string  $buffer The buffer to replace patterns in
+     * @return string The buffer with patterns replaced
      */
-    protected function replace(array $replace, $buffer)
+    protected function replace(array $replace, string $buffer): string
     {
         return preg_replace(array_keys($replace), array_values($replace), $buffer);
     }
 
     /**
-     * Check Laravel Page Speed is enabled or not
+     * Check if PageSpeed middleware is enabled
      *
-     * @return bool
+     * @return bool True if PageSpeed middleware is enabled, false otherwise
      */
-    protected function isEnable()
+    protected function isEnabled(): bool
     {
         if (! is_null(static::$isEnabled)) {
             return static::$isEnabled;
@@ -67,43 +88,35 @@ abstract class PageSpeed
     }
 
     /**
-     * Should Process
+     * Check if PageSpeed should process the request and response
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Http\Response  $response
-     * @return bool
+     * @param  Request  $request The HTTP request
+     * @param  Response|BinaryFileResponse|StreamedResponse  $response The HTTP response
+     * @return bool True if PageSpeed should process the request and response, false otherwise
      */
-    protected function shouldProcessPageSpeed($request, $response)
-    {
-        if (! $this->isEnable()) {
+    protected function shouldProcessPageSpeed(
+        Request $request,
+        Response|BinaryFileResponse|StreamedResponse $response
+    ): bool {
+        if (! $this->isEnabled()) {
             return false;
         }
 
-        if ($response instanceof BinaryFileResponse) {
-            return false;
-        }
-
-        if ($response instanceof StreamedResponse) {
+        if ($response instanceof BinaryFileResponse || $response instanceof StreamedResponse) {
             return false;
         }
 
         $patterns = config('laravel-page-speed.skip', []);
 
-        foreach ($patterns as $pattern) {
-            if ($request->is($pattern)) {
-                return false;
-            }
-        }
-
-        return true;
+        return ! $request->is($patterns);
     }
 
     /**
-     * Match all occurrences of the html tags given
+     * Match all HTML tags in the buffer
      *
-     * @param  array  $tags   Html tags to match in the given buffer
-     * @param  string  $buffer Middleware response buffer
-     * @return array $matches Html tags found in the buffer
+     * @param  array  $tags The HTML tags to match
+     * @param  string  $buffer The HTML buffer
+     * @return array The matched HTML tags
      */
     protected function matchAllHtmlTag(array $tags, string $buffer): array
     {
@@ -111,11 +124,19 @@ abstract class PageSpeed
         $normalTags = array_diff($tags, $voidTags);
 
         return array_merge(
-            $this->matchTags($voidTags, '/\<\s*(%tags)[^>]*\>/', $buffer),
-            $this->matchTags($normalTags, '/\<\s*(%tags)[^>]*\>((.|\n)*?)\<\s*\/\s*(%tags)\>/', $buffer)
+            $this->matchTags($voidTags, self::VOID_TAGS_PATTERN, $buffer),
+            $this->matchTags($normalTags, self::NORMAL_TAGS_PATTERN, $buffer)
         );
     }
 
+    /**
+     * Matches tags in the given buffer against a pattern
+     *
+     * @param  array  $tags The tags to match
+     * @param  string  $pattern The pattern to match against
+     * @param  string  $buffer The buffer to search in
+     * @return array The matched tags
+     */
     protected function matchTags(array $tags, string $pattern, string $buffer): array
     {
         if (empty($tags)) {
@@ -130,13 +151,13 @@ abstract class PageSpeed
     }
 
     /**
-     * Replace occurrences of regex pattern inside of given HTML tags
+     * Replaces the specified content inside HTML tags with a given replacement string
      *
-     * @param  array  $tags    Html tags to match and run regex to replace occurrences
-     * @param  string  $regex   Regex rule to match on the given HTML tags
-     * @param  string  $replace Content to replace
-     * @param  string  $buffer  Middleware response buffer
-     * @return string $buffer Middleware response buffer
+     * @param  array  $tags The HTML tags to match
+     * @param  string  $regex The regular expression pattern to match the content inside the HTML tags
+     * @param  string  $replace The replacement string to use
+     * @param  string  $buffer The HTML content to search and replace within
+     * @return string The modified HTML content
      */
     protected function replaceInsideHtmlTags(array $tags, string $regex, string $replace, string $buffer): string
     {
