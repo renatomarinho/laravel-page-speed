@@ -6,14 +6,18 @@ namespace RenatoMarinho\LaravelPageSpeed\Middleware;
 
 class ElideAttributes extends PageSpeed
 {
+    /**
+     * Elide attributes from the given buffer
+     *
+     * @param  string  $buffer The input buffer to apply transformations to
+     * @return string The resulting buffer after applying transformations
+     */
     public function apply(string $buffer): string
     {
-        $replace = [
+        return $this->replace([
             '/ method=("get"|get)/' => '',
             '/ disabled=[^ >]*(.*?)/' => ' disabled',
             '/ selected=[^ >]*(.*?)/' => ' selected',
-        ];
-
-        return $this->replace($replace, $buffer);
+        ], $buffer);
     }
 }
