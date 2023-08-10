@@ -12,8 +12,9 @@
 </p>
 
 <h4 align="center">
-    <img src="https://img.shields.io/badge/release-v3.0.0-blue" alt="Project Version">
-    <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+    <img src="http://poser.pugx.org/dotninth/laravel-tachyon/v?style=for-the-badge" alt="Latest Stable Version">
+    <img src="http://poser.pugx.org/dotninth/laravel-tachyon/require/php?style=for-the-badge" alt="PHP Version Require">
+    <img src="http://poser.pugx.org/dotninth/laravel-tachyon/license?style=for-the-badge" alt="License">
 </h4>
 
 ## Introduction
