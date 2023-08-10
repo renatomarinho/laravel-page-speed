@@ -11,12 +11,12 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Renato Marinho",
-            "email": "renato.marinho@s2move.com"
-        },
-        {
             "name": "Dominik Lokkhart",
             "email": "lokkhart@yard77.dev"
+        },
+        {
+            "name": "Renato Marinho",
+            "email": "renato.marinho@s2move.com"
         }
     ],
     "require": {
