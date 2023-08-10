@@ -42,7 +42,7 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
+        "test": "./vendor/bin/pest",
         "check-style": "./vendor/bin/pint --test src tests",
         "fix-style": "./vendor/bin/pint src tests"
     },
