@@ -1,6 +1,6 @@
 {
-    "name": "dotninth/laravel-page-speed",
-    "description": "Laravel Page Speed",
+    "name": "dotninth/laravel-tachyon",
+    "description": "Laravel Tachyon",
     "keywords": [
         "laravel",
         "page speed",
@@ -21,36 +21,43 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0"
+        "illuminate/support": "^9.0 || ^10.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5 || ^9.0",
-        "orchestra/testbench": "^4.0 || ^5.0 || ^6.0 || ^7.0",
-        "squizlabs/php_codesniffer": "^3.6",
-        "mockery/mockery": "^1.4"
+        "phpunit/phpunit": "^9.6",
+        "orchestra/testbench": "^6.0 || ^7.0",
+        "squizlabs/php_codesniffer": "^3.7",
+        "mockery/mockery": "^1.6",
+        "laravel/pint": "^1.10",
+        "pestphp/pest": "^1.23"
     },
     "autoload": {
         "psr-4": {
-            "RenatoMarinho\\LaravelPageSpeed\\": "src/"
+            "DotNinth\\LaravelTachyon\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RenatoMarinho\\LaravelPageSpeed\\Test\\": "tests"
+            "DotNinth\\LaravelTachyon\\Test\\": "tests"
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
-        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+        "test": "./vendor/bin/pest",
+        "check-style": "./vendor/bin/pint --test src tests",
+        "fix-style": "./vendor/bin/pint src tests"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
         "laravel": {
             "providers": [
-                "RenatoMarinho\\LaravelPageSpeed\\ServiceProvider"
+                "DotNinth\\LaravelTachyon\\ServiceProvider"
             ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }

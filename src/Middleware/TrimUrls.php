@@ -1,16 +1,22 @@
 <?php
 
-namespace RenatoMarinho\LaravelPageSpeed\Middleware;
+declare(strict_types=1);
+
+namespace DotNinth\LaravelTachyon\Middleware;
 
 class TrimUrls extends PageSpeed
 {
-    public function apply($buffer)
+    /**
+     * Trim URLs from the given buffer
+     *
+     * @param  string  $buffer The input buffer to apply transformations to
+     * @return string The resulting buffer after applying transformations
+     */
+    public function apply(string $buffer): string
     {
-        $replace = [
+        return $this->replace([
             '/https:/' => '',
-            '/http:/' => ''
-        ];
-
-        return $this->replace($replace, $buffer);
+            '/http:/' => '',
+        ], $buffer);
     }
 }

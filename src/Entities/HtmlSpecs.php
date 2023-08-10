@@ -1,9 +1,14 @@
 <?php
 
-namespace RenatoMarinho\LaravelPageSpeed\Entities;
+declare(strict_types=1);
+
+namespace DotNinth\LaravelTachyon\Entities;
 
 class HtmlSpecs
 {
+    /**
+     * Return an array of void elements
+     */
     public static function voidElements(): array
     {
         return [

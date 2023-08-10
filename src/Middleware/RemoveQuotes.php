@@ -1,16 +1,24 @@
 <?php
 
-namespace RenatoMarinho\LaravelPageSpeed\Middleware;
+declare(strict_types=1);
 
-use RenatoMarinho\LaravelPageSpeed\Entities\HtmlSpecs;
+namespace DotNinth\LaravelTachyon\Middleware;
+
+use DotNinth\LaravelTachyon\Entities\HtmlSpecs;
 
 class RemoveQuotes extends PageSpeed
 {
-    public function apply($buffer)
+    /**
+     * Remove quotes from attribute values in the given buffer
+     *
+     * @param  string  $buffer The input buffer to apply transformations to
+     * @return string The resulting buffer after applying transformations
+     */
+    public function apply(string $buffer): string
     {
         $buffer = $this->replaceInsideHtmlTags(HtmlSpecs::voidElements(), '/\/>/', '>', $buffer);
 
-        $replace = [
+        return $this->replace([
             '/ src="(.\S*?)"/' => ' src=$1',
             '/ width="(.\S*?)"/' => ' width=$1',
             '/ height="(.\S*?)"/' => ' height=$1',
@@ -20,8 +28,6 @@ class RemoveQuotes extends PageSpeed
             '/ border="(.\S*?)"/' => ' border=$1',
             '/ crossorigin="(.\S*?)"/' => ' crossorigin=$1',
             '/ type="(.\S*?)"/' => ' type=$1',
-        ];
-
-        return $this->replace($replace, $buffer);
+        ], $buffer);
     }
 }

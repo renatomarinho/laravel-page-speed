@@ -1,15 +1,21 @@
 <?php
 
-namespace RenatoMarinho\LaravelPageSpeed\Middleware;
+declare(strict_types=1);
+
+namespace DotNinth\LaravelTachyon\Middleware;
 
 class DeferJavascript extends PageSpeed
 {
-    public function apply($buffer)
+    /**
+     * Add defer attribute to script tags
+     *
+     * @param  string  $buffer The buffer to add the defer attribute to
+     * @return string The modified buffer after adding the defer attribute
+     */
+    public function apply(string $buffer): string
     {
-        $replace = [
-            '/<script(?=[^>]+src[^>]+)((?![^>]+defer|data-pagespeed-no-defer[^>]+)[^>]+)/i' => '<script $1 defer',
-        ];
-
-        return $this->replace($replace, $buffer);
+        return $this->replace([
+            '/<script(?=[^>]+src[^>]+)((?![^>]+defer|data-pagespeed-no-defer[^>]+)[^>]+)/i' => '<script$1 defer',
+        ], $buffer);
     }
 }
