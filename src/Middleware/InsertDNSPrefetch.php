@@ -45,7 +45,7 @@ class InsertDNSPrefetch extends PageSpeed
             $domain = explode('/', str_replace('//', '', $domain));
 
             return "<link rel=\"dns-prefetch\" href=\"//{$domain[0]}\">";
-        })->unique()->implode("\n");
+        })->unique()->implode("");
     }
 
     /**
