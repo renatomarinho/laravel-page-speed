@@ -1,12 +1,31 @@
-# Laravel Tachyon
+<h1 align="center">
+    <a href="#gh-light-mode-only">
+        <img src="./.github/assets/logo-light-mode.svg" alt="Laravel Tachyon">
+    </a>
+    <a href="#gh-dark-mode-only">
+        <img src="./.github/assets/logo-dark-mode.svg" alt="Laravel Tachyon">
+    </a>
+</h1>
+
+<p align="center">
+    <i align="center"></i>
+</p>
+
+<h4 align="center">
+    <img src="https://img.shields.io/badge/release-v3.0.0-blue" alt="Project Version">
+    <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+</h4>
+
+## Introduction
 
 Simple package to minify HTML output on demand which results in a 35%+ optimization. Laravel Page Speed was created by [Renato Marinho][link-author], and currently maintained by [João Roberto P. Borges][link-maintainer], [Lucas Mesquita Borges][link-maintainer-2] and [Renato Marinho][link-author].
 
-## Installation
+## Getting Started
 
-> **Requires:**
+### Requirements
 - **[PHP 8.0+](https://php.net/releases/)**
 - **[Laravel 9.0+](https://github.com/laravel/laravel)**
+### Installation
 
 You can install the package via composer:
 
@@ -16,11 +35,11 @@ composer require dotninth/laravel-tachyon
 
 This package supports Laravel [Package Discovery][link-package-discovery].
 
-### Publish configuration file
+#### Publish configuration file
 
  `php artisan vendor:publish --provider="DotNinth\LaravelTachyon\ServiceProvider"`
 
-## Do not forget to register middlewares
+### Do not forget to register middlewares
 
 Next, the `\DotNinth\LaravelTachyon\Middleware\CollapseWhitespace::class` and other middleware must be registered in the kernel, for example:
 
