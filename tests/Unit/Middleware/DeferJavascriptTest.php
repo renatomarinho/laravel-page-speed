@@ -2,8 +2,6 @@
 
 namespace DotNinth\LaravelPageSpeed\Middleware;
 
-use Pest\TestSuite\TestCase;
-
 it("should defer JavaScript in the HTML buffer", function () {
     $deferJavascript = new DeferJavascript();
     $buffer = '<html><head><script src="script.js"></script></head><body></body></html>';
