@@ -56,8 +56,8 @@ it('apply replaces multiple spaces with single space', function () {
 
 it('apply removes spaces between HTML tags', function () {
     $middleware = new CollapseWhitespace();
-    $buffer = "<div> Hello </div>";
-    $expectedResult = "<div>Hello</div>";
+    $buffer = "<div>Hello</div>   <div>World</div>";
+    $expectedResult = "<div>Hello</div><div>World</div>";
 
     $result = $middleware->apply($buffer);
 
