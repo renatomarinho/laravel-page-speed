@@ -1,9 +1,9 @@
 <h1 align="center">
-    <a href="#gh-light-mode-only">
-        <img src="./.github/assets/logo-light-mode.svg" alt="Laravel Tachyon">
+    <a href="https://github.com/dotninth/laravel-tachyon#gh-light-mode-only">
+        <img src="./.github/assets/laravel-tachyon-light.png" alt="Laravel Tachyon">
     </a>
-    <a href="#gh-dark-mode-only">
-        <img src="./.github/assets/logo-dark-mode.svg" alt="Laravel Tachyon">
+    <a href="https://github.com/dotninth/laravel-tachyon#gh-dark-mode-only">
+        <img src="./.github/assets/laravel-tachyon-dark.png" alt="Laravel Tachyon">
     </a>
 </h1>
 
