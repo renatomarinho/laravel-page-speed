@@ -1,6 +1,6 @@
 <?php
 
-namespace DotNinth\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelTachyon\Middleware;
 
 it('applies method generates the correct output', function () {
     $middleware = new InsertDNSPrefetch();

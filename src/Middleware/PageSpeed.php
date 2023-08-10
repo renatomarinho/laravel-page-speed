@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelTachyon\Middleware;
 
 use Closure;
-use DotNinth\LaravelPageSpeed\Entities\HtmlSpecs;
+use DotNinth\LaravelTachyon\Entities\HtmlSpecs;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;

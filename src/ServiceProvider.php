@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelPageSpeed;
+namespace DotNinth\LaravelTachyon;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -21,7 +21,7 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/laravel-page-speed.php' => config_path('laravel-page-speed.php'),
+            __DIR__ . '/../config/laravel-tachyon.php' => config_path('laravel-tachyon.php'),
         ]);
     }
 
@@ -30,6 +30,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-page-speed.php', 'laravel-page-speed.php');
+        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-tachyon.php', 'laravel-tachyon.php');
     }
 }

@@ -4,14 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Enable Laravel Page Speed
+    | Enable Laravel Tachyon
     |--------------------------------------------------------------------------
     |
-    | Set this field to false to disable the laravel page speed service.
+    | Set this field to false to disable the Laravel Tachyon service.
     | You would probably replace that in your local configuration to get a readable output.
     |
     */
-    'enable' => env('LARAVEL_PAGE_SPEED_ENABLE', true),
+    'enable' => env('LARAVEL_TACHYON_ENABLE', true),
 
     /*
     |--------------------------------------------------------------------------

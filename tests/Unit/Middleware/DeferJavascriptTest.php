@@ -1,6 +1,6 @@
 <?php
 
-namespace DotNinth\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelTachyon\Middleware;
 
 it("should defer JavaScript in the HTML buffer", function () {
     $deferJavascript = new DeferJavascript();

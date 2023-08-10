@@ -1,6 +1,6 @@
 <?php
 
-namespace DotNinth\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelTachyon\Middleware;
 
 it('applies inline css transformation to html content', function () {
     $middleware = new InlineCss();

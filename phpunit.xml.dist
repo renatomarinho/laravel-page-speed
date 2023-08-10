@@ -15,7 +15,7 @@
          verbose="true"
 >
     <testsuites>
-        <testsuite name="Laravel Page Speed Test Suite">
+        <testsuite name="Laravel Tachyon Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>

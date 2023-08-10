@@ -1,6 +1,6 @@
 <?php
 
-namespace DotNinth\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelTachyon\Middleware;
 
 it('should elide attributes from the given buffer', function () {
     $elideAttributes = new ElideAttributes();

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelPageSpeed\Middleware;
+namespace DotNinth\LaravelTachyon\Middleware;
 
 class RemoveComments extends PageSpeed
 {

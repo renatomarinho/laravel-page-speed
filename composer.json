@@ -1,6 +1,6 @@
 {
-    "name": "dotninth/laravel-page-speed",
-    "description": "Laravel Page Speed",
+    "name": "dotninth/laravel-tachyon",
+    "description": "Laravel Tachyon",
     "keywords": [
         "laravel",
         "page speed",
@@ -33,12 +33,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DotNinth\\LaravelPageSpeed\\": "src/"
+            "DotNinth\\LaravelTachyon\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DotNinth\\LaravelPageSpeed\\Test\\": "tests"
+            "DotNinth\\LaravelTachyon\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -51,7 +51,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DotNinth\\LaravelPageSpeed\\ServiceProvider"
+                "DotNinth\\LaravelTachyon\\ServiceProvider"
             ]
         }
     },

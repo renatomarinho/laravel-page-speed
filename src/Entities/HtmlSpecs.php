@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelPageSpeed\Entities;
+namespace DotNinth\LaravelTachyon\Entities;
 
 class HtmlSpecs
 {
