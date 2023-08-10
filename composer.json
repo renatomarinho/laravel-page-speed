@@ -28,7 +28,8 @@
         "orchestra/testbench": "^6.0 || ^7.0",
         "squizlabs/php_codesniffer": "^3.7",
         "mockery/mockery": "^1.6",
-        "laravel/pint": "^1.10"
+        "laravel/pint": "^1.10",
+        "pestphp/pest": "^1.23"
     },
     "autoload": {
         "psr-4": {
@@ -52,6 +53,11 @@
             "providers": [
                 "DotNinth\\LaravelPageSpeed\\ServiceProvider"
             ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }
