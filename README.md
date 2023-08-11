@@ -1,3 +1,14 @@
+<p align="center">
+    <a href="https://supportukrainenow.org#gh-light-mode-only">
+        <img src="./.github/assets/support-ukraine-light.svg" alt="Support Ukraine">
+    </a>
+    <a href="https://supportukrainenow.org#gh-dark-mode-only">
+        <img src="./.github/assets/support-ukraine-dark.svg" alt="Support Ukraine">
+    </a>
+</p>
+
+<br>
+
 <h1 align="center">
     <a href="https://github.com/ideal-creative-lab/laravel-tachyon#gh-light-mode-only">
         <img src="./.github/assets/laravel-tachyon-light.svg" alt="Laravel Tachyon">
@@ -31,7 +42,7 @@ Simple package to minify HTML output on demand which results in a 35%+ optimizat
 You can install the package via composer:
 
 ```sh
-composer require IdealCreativeLab/laravel-tachyon
+composer require ideal-creative-lab/laravel-tachyon
 ```
 
 This package supports Laravel [Package Discovery][link-package-discovery].
