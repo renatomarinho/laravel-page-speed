@@ -30,7 +30,7 @@
 
 ## Introduction
 
-Simple package to minify HTML output on demand which results in a 35%+ optimization. Laravel Page Speed was created by [Renato Marinho][link-author], and currently maintained by [João Roberto P. Borges][link-maintainer], [Lucas Mesquita Borges][link-maintainer-2] and [Renato Marinho][link-author].
+Laravel Tachyon is a powerful package designed to optimize the performance of your Laravel applications by minifying HTML output on demand. With over 35% optimization, it helps improve page load speed and overall user experience.
 
 ## Getting Started
 
@@ -41,7 +41,7 @@ Simple package to minify HTML output on demand which results in a 35%+ optimizat
 
 You can install the package via composer:
 
-```sh
+```zsh
 composer require ideal-creative-lab/laravel-tachyon
 ```
 
@@ -49,29 +49,42 @@ This package supports Laravel [Package Discovery][link-package-discovery].
 
 #### Publish configuration file
 
- `php artisan vendor:publish --provider="IdealCreativeLab\LaravelTachyon\ServiceProvider"`
+To customize the package settings, you can publish the configuration file with the following command:
 
-### Do not forget to register middlewares
+```zsh
+php artisan vendor:publish --provider="IdealCreativeLab\LaravelTachyon\ServiceProvider"
+```
 
-Next, the `\IdealCreativeLab\LaravelTachyon\Middleware\CollapseWhitespace::class` and other middleware must be registered in the kernel, for example:
+### Middleware Registration
+
+To enable the package functionality, make sure to register the provided middlewares in the kernel of your Laravel application. Here's an example of how to do it:
 
 ```php
-//app/Http/Kernel.php
+// app/Http/Kernel.php
 
 protected $middleware = [
     ...
     \IdealCreativeLab\LaravelTachyon\Middleware\InlineCss::class,
     \IdealCreativeLab\LaravelTachyon\Middleware\ElideAttributes::class,
     \IdealCreativeLab\LaravelTachyon\Middleware\InsertDNSPrefetch::class,
-    // \IdealCreativeLab\LaravelTachyon\Middleware\RemoveComments::class,
-    // \IdealCreativeLab\LaravelTachyon\Middleware\TrimUrls::class, 
     \IdealCreativeLab\LaravelTachyon\Middleware\RemoveQuotes::class,
-    \IdealCreativeLab\LaravelTachyon\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
+    \IdealCreativeLab\LaravelTachyon\Middleware\CollapseWhitespace::class,
     \IdealCreativeLab\LaravelTachyon\Middleware\DeferJavascript::class,
 ]
 ```
 
 ## Middlewares Details
+
+- `RemoveComments::class`: Removes HTML, JS, and CSS comments from the output to reduce the transfer size of HTML files.
+- `CollapseWhitespace::class`: Reduces the size of HTML files by removing unnecessary white space. **It automatically calls the `RemoveComments::class` middleware before executing.**
+- ``RemoveQuotes::class`: Removes unnecessary quotes from HTML attributes, resulting in a reduced byte count on most pages.
+- `ElideAttributes::class`: Reduces the transfer size of HTML files by removing attributes from tags if their values match the default attribute values.
+- `InsertDNSPrefetch::class`': Includes `<link rel="dns-prefetch" href="//www.example.com">` tags in the HTML `<head>` section to enable DNS prefetching, reducing DNS lookup time and improving page load times.
+- `TrimUrls::class`: Trims URLs by making them relative to the base URL of the page. This can help reduce the size of URLs and may improve performance.
+  - **⚠️ Note: Use this middleware with care, as it can cause problems if the wrong base URL is used.**
+- `InlineCss::class`: Transforms the inline `style` attribute of HTML tags into classes by moving the CSS into the `<head>` section, improving page rendering and reducing the number of browser requests.
+- `DeferJavascript::class`: Defers the execution of JavaScript code in HTML, prioritizing the rendering of critical content before executing JavaScript.
+  - If necessary cancel deferring in some script, use `data-tachyon-no-defer` as script attribute to cancel deferring.
 
 ### \IdealCreativeLab\LaravelTachyon\Middleware\RemoveComments::class
 
@@ -115,7 +128,7 @@ The **InlineCss::class** filter transforms the inline "style" attribute of tags 
 
 Defers the execution of javascript in the HTML.
 
-> If necessary cancel deferring in some script, use `data-pagespeed-no-defer` as script attribute to cancel deferring.
+> If necessary cancel deferring in some script, use `data-tachyon-no-defer` as script attribute to cancel deferring.
 
 <hr>
 
