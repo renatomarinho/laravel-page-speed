@@ -76,61 +76,16 @@ protected $middleware = [
 ## Middlewares Details
 
 - `RemoveComments::class`: Removes HTML, JS, and CSS comments from the output to reduce the transfer size of HTML files.
-- `CollapseWhitespace::class`: Reduces the size of HTML files by removing unnecessary white space. **It automatically calls the `RemoveComments::class` middleware before executing.**
-- ``RemoveQuotes::class`: Removes unnecessary quotes from HTML attributes, resulting in a reduced byte count on most pages.
+- `CollapseWhitespace::class`: Reduces the size of HTML files by removing unnecessary white space.
+  - **It automatically calls the `RemoveComments::class` middleware before executing.**
+- `RemoveQuotes::class`: Removes unnecessary quotes from HTML attributes, resulting in a reduced byte count on most pages.
 - `ElideAttributes::class`: Reduces the transfer size of HTML files by removing attributes from tags if their values match the default attribute values.
-- `InsertDNSPrefetch::class`': Includes `<link rel="dns-prefetch" href="//www.example.com">` tags in the HTML `<head>` section to enable DNS prefetching, reducing DNS lookup time and improving page load times.
+- `InsertDNSPrefetch::class`: Includes `<link rel="dns-prefetch" href="//www.example.com">` tags in the HTML `<head>` section to enable DNS prefetching, reducing DNS lookup time and improving page load times.
 - `TrimUrls::class`: Trims URLs by making them relative to the base URL of the page. This can help reduce the size of URLs and may improve performance.
   - **⚠️ Note: Use this middleware with care, as it can cause problems if the wrong base URL is used.**
 - `InlineCss::class`: Transforms the inline `style` attribute of HTML tags into classes by moving the CSS into the `<head>` section, improving page rendering and reducing the number of browser requests.
 - `DeferJavascript::class`: Defers the execution of JavaScript code in HTML, prioritizing the rendering of critical content before executing JavaScript.
-  - If necessary cancel deferring in some script, use `data-tachyon-no-defer` as script attribute to cancel deferring.
-
-### \IdealCreativeLab\LaravelTachyon\Middleware\RemoveComments::class
-
-The **RemoveComments::class** filter eliminates HTML, JS and CSS comments.
-The filter reduces the transfer size of HTML files by removing the comments. Depending on the HTML file, this filter can significantly reduce the number of bytes transmitted on the network.
-
-### \IdealCreativeLab\LaravelTachyon\Middleware\CollapseWhitespace::class
-
-The **CollapseWhitespace::class** filter reduces bytes transmitted in an HTML file by removing unnecessary whitespace.
-This middleware invoke **RemoveComments::class** filter before executation.
-
-> **Note**: Do not register the "RemoveComments::class" filter with it. Because it will be called automatically by "CollapseWhitespace::class"
-
-### \IdealCreativeLab\LaravelTachyon\Middleware\RemoveQuotes::class
-
-The **RemoveQuotes::class** filter eliminates unnecessary quotation marks from HTML attributes. While required by the various HTML specifications, browsers permit their omission when the value of an attribute is composed of a certain subset of characters (alphanumerics and some punctuation characters).
-
-Quote removal produces a modest savings in byte count on most pages.
-
-### \IdealCreativeLab\LaravelTachyon\Middleware\ElideAttributes::class
-
-The **ElideAttributes::class** filter reduces the transfer size of HTML files by removing attributes from tags when the specified value is equal to the default value for that attribute. This can save a modest number of bytes, and may make the document more compressible by canonicalizing the affected tags.
-
-### \IdealCreativeLab\LaravelTachyon\Middleware\InsertDNSPrefetch::class
-
-The **InsertDNSPrefetch::class** filter Injects <link rel="dns-prefetch" href="//www.example.com"> tags in the HEAD to enable the browser to do DNS prefetching.
-
-DNS resolution time varies from <1ms for locally cached results, to hundreds of milliseconds due to the cascading nature of DNS. This can contribute significantly towards total page load time. This filter reduces DNS lookup time by providing hints to the browser at the beginning of the HTML, which allows the browser to pre-resolve DNS for resources on the page.
-
- ### ⚠️ \IdealCreativeLab\LaravelTachyon\Middleware\TrimUrls::class,
-
-The **TrimUrls::class** filter trims URLs by resolving them by making them relative to the base URL for the page.
-
-> **Warning**: **TrimUrls::class** is considered **medium risk**. It can cause problems if it uses the wrong base URL. This can happen, for example, if you serve HTML that will be pasted verbatim into other HTML pages. If URLs are trimmed on the first page, they will be incorrect for the page they are inserted into. In this case, just disable the middleware.
-
-### \IdealCreativeLab\LaravelTachyon\Middleware\InlineCss::class
-
-The **InlineCss::class** filter transforms the inline "style" attribute of tags into classes by moving the CSS to the header.
-
-### \IdealCreativeLab\LaravelTachyon\Middleware\DeferJavascript::class
-
-Defers the execution of javascript in the HTML.
-
-> If necessary cancel deferring in some script, use `data-tachyon-no-defer` as script attribute to cancel deferring.
-
-<hr>
+  - If you need **to cancel the defer** in some script, use `data-tachyon-no-defer` as a script attribute to cancel the defer.
 
 ## Configuration
 
