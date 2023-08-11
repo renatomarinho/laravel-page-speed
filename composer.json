@@ -1,5 +1,5 @@
 {
-    "name": "dotninth/laravel-tachyon",
+    "name": "ideal-creative-lab/laravel-tachyon",
     "description": "Laravel Tachyon",
     "keywords": [
         "laravel",
@@ -33,12 +33,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DotNinth\\LaravelTachyon\\": "src/"
+            "IdealCreativeLab\\LaravelTachyon\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DotNinth\\LaravelTachyon\\Test\\": "tests"
+            "IdealCreativeLab\\LaravelTachyon\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -51,7 +51,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DotNinth\\LaravelTachyon\\ServiceProvider"
+                "IdealCreativeLab\\LaravelTachyon\\ServiceProvider"
             ]
         }
     },
