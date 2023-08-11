@@ -43,9 +43,9 @@ abstract class PageSpeed
      *
      * @param  \Illuminate\Http\Request  $request HTTP request
      * @param  \Closure  $next The next middleware
-     * @return \Illuminate\Http\Response $response The response
+     * @return mixed $response The response
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next): mixed
     {
         $response = $next($request);
 
