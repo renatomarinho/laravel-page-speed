@@ -89,24 +89,24 @@ protected $middleware = [
 
 ## Configuration
 
-After installing package, you may need to configure some options.
+After installing the package, you may need to configure some options according to your needs.
 
 ### Disable Service
 
-You would probably like to set up the local environment to get a readable output.
+To disable the Laravel Tachyon service in your local environment and get readable output, modify the following configuration file:
 
 ```php
-//config/laravel-tachyon.php
+// config/laravel-tachyon.php
 
 //Set this field to false to disable the Laravel Tachyon service.
 'enable' => env('LARAVEL_TACHYON_ENABLE', true),
 ```
 ### Skip routes
 
-You would probably like to configure the package to skip some routes.
+You can configure the package to skip optimization for certain routes. Use the `*` wildcard to match multiple routes. Here's an example:
 
 ```php
-//config/laravel-tachyon.php
+// config/laravel-tachyon.php
 
 //You can use * as wildcard.
 'skip' => [
@@ -116,13 +116,14 @@ You would probably like to configure the package to skip some routes.
 ];
 ```
 
-By default this field comes configured with some options, so feel free to configure according to your needs...
+Feel free to adjust the configuration options according to your specific needs.
 
-> *Notice*: This package skip automatically 'binary' and 'streamed' responses. See [File Downloads][link-file-download].
+> ***Notice:*** By default, the package automatically skips `binary` and `streamed` responses. See the [File Downloads][link-file-download] for more information.
+
 
 ## Testing
 
-```sh
+```zsh
 $ composer test
 ```
 
