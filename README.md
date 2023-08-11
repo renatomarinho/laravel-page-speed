@@ -30,7 +30,21 @@
 
 ## Introduction
 
-Laravel Tachyon is a powerful package designed to optimize the performance of your Laravel applications by minifying HTML output on demand. With over 35% optimization, it helps improve page load speed and overall user experience.
+`Laravel Tachyon` is a powerful package designed to optimize the performance of your Laravel applications by minifying HTML output on demand. With over 35% optimization, it helps improve page load speed and overall user experience.
+
+**Laravel Tachyon** supports the following:
+
+- **Laravel Livewire**: Laravel Tachyon seamlessly integrates with Laravel Livewire, allowing you to optimize the HTML output of your Livewire components.
+
+- **Alpine JS**: Laravel Tachyon is compatible with Alpine JS, ensuring that the optimization process does not interfere with the functionality of your Alpine JS components.
+
+Additionally, **Laravel Tachyon** ensures that the optimization process does not break the following HTML elements:
+
+- `<pre>`: The content within `<pre>` tags, which is typically used for displaying preformatted text, is preserved and not modified during the optimization process.
+
+- `<textarea>`: The content within `<textarea>` tags, which is used for input fields that allow multiple lines of text, is also preserved and not modified.
+
+- `<script>`: The content within `<script>` tags, which is used for JavaScript code, is not modified by Laravel Tachyon. This ensures that your JavaScript code remains intact and functions as expected.
 
 ## Getting Started
 
