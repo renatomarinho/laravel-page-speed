@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelTachyon\Entities;
+namespace IdealCreativeLab\LaravelTachyon\Entities;
 
 class HtmlSpecs
 {

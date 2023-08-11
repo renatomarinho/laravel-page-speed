@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelTachyon\Middleware;
+namespace IdealCreativeLab\LaravelTachyon\Middleware;
 
-use DotNinth\LaravelTachyon\Entities\HtmlSpecs;
+use IdealCreativeLab\LaravelTachyon\Entities\HtmlSpecs;
 
 class RemoveQuotes extends PageSpeed
 {

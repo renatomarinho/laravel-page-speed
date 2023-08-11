@@ -1,8 +1,8 @@
 <?php
 
-namespace DotNinth\LaravelTachyon\Middleware;
+namespace IdealCreativeLab\LaravelTachyon\Middleware;
 
-it("should defer JavaScript in the HTML buffer", function () {
+it('should defer JavaScript in the HTML buffer', function () {
     $deferJavascript = new DeferJavascript();
     $buffer = '<html><head><script src="script.js"></script></head><body></body></html>';
 

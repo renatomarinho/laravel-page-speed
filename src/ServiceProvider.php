@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelTachyon;
+namespace IdealCreativeLab\LaravelTachyon;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 

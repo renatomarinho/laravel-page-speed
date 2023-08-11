@@ -1,6 +1,6 @@
 <?php
 
-namespace DotNinth\LaravelTachyon\Middleware;
+namespace IdealCreativeLab\LaravelTachyon\Middleware;
 
 it('applies inline css transformation to html content', function () {
     $middleware = new InlineCss();

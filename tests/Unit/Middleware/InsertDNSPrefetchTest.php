@@ -1,6 +1,6 @@
 <?php
 
-namespace DotNinth\LaravelTachyon\Middleware;
+namespace IdealCreativeLab\LaravelTachyon\Middleware;
 
 it('applies method generates the correct output', function () {
     $middleware = new InsertDNSPrefetch();

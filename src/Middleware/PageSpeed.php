@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DotNinth\LaravelTachyon\Middleware;
+namespace IdealCreativeLab\LaravelTachyon\Middleware;
 
 use Closure;
-use DotNinth\LaravelTachyon\Entities\HtmlSpecs;
+use IdealCreativeLab\LaravelTachyon\Entities\HtmlSpecs;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;

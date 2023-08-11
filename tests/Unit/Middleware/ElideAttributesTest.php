@@ -1,6 +1,6 @@
 <?php
 
-namespace DotNinth\LaravelTachyon\Middleware;
+namespace IdealCreativeLab\LaravelTachyon\Middleware;
 
 it('should elide attributes from the given buffer', function () {
     $elideAttributes = new ElideAttributes();
