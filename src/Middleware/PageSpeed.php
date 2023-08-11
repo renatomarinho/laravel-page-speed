@@ -91,12 +91,12 @@ abstract class PageSpeed
      * Check if PageSpeed should process the request and response
      *
      * @param  Request  $request The HTTP request
-     * @param  Response|BinaryFileResponse|StreamedResponse  $response The HTTP response
+     * @param  mixed  $response The HTTP response
      * @return bool True if PageSpeed should process the request and response, false otherwise
      */
     protected function shouldProcessPageSpeed(
         Request $request,
-        Response|BinaryFileResponse|StreamedResponse $response
+        mixed $response
     ): bool {
         if (! $this->isEnabled()) {
             return false;
