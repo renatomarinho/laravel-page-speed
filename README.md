@@ -92,6 +92,7 @@ protected $middleware = [
 - `RemoveComments::class`: Removes HTML, JS, and CSS comments from the output to reduce the transfer size of HTML files.
 - `CollapseWhitespace::class`: Reduces the size of HTML files by removing unnecessary white space.
   - **It automatically calls the `RemoveComments::class` middleware before executing.**
+  - You can **ignore** minification of some elements. Add `data-tachyon-ignore` as an element attribute to do so.
 - `RemoveQuotes::class`: Removes unnecessary quotes from HTML attributes, resulting in a reduced byte count on most pages.
 - `ElideAttributes::class`: Reduces the transfer size of HTML files by removing attributes from tags if their values match the default attribute values.
 - `InsertDNSPrefetch::class`: Includes `<link rel="dns-prefetch" href="//www.example.com">` tags in the HTML `<head>` section to enable DNS prefetching, reducing DNS lookup time and improving page load times.

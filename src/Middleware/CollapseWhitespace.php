@@ -85,7 +85,7 @@ class CollapseWhitespace extends PageSpeed
     protected function findSkippedElements(string $buffer): void
     {
         foreach ($this->ignoreElements as $element) {
-            $pattern = '/<' . $element . '[^>]*>(.*)<\/' . $element . '>/Uuis';
+            $pattern = '/<' . $element . '[^>]*data-tachyon-ignore[^>]*|<' . $element . '[^>]*>(.*)<\/' . $element . '>/Uuis';
             if (preg_match_all($pattern, $buffer, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     $this->addSkippedElement($match[1]);
