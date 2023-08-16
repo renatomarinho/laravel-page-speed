@@ -67,18 +67,22 @@ it('apply removes spaces between HTML tags', function () {
 it('ignores elements with data-tachyon-ignore', function () {
     $middleware = new CollapseWhitespace();
     $buffer = <<<HTML
-<div data-tachyon-ignore>
-    <p>Hello</p>
+<div>
+    <div>Hello</div>   <div>World</div>
+    <div data-tachyon-ignore>
+        <p>Hello</p>
 
-    <p>World</p>
+        <p>World</p>
+    </div>
 </div>
 HTML;
 
     $expectedResult = <<<HTML
-<div data-tachyon-ignore>
-    <p>Hello</p>
+<div><div>Hello</div><div>World</div><div data-tachyon-ignore>
+        <p>Hello</p>
 
-    <p>World</p>
+        <p>World</p>
+    </div>
 </div>
 HTML;
 
