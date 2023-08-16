@@ -63,3 +63,25 @@ it('apply removes spaces between HTML tags', function () {
 
     expect($result)->toBe($expectedResult);
 });
+
+it('ignores elements with data-tachyon-ignore', function () {
+    $middleware = new CollapseWhitespace();
+    $buffer = <<<HTML
+<div data-tachyon-ignore>
+    <p>Hello</p>
+
+    <p>World</p>
+</div>
+HTML;
+
+    $expectedResult = <<<HTML
+<div data-tachyon-ignore>
+    <p>Hello</p>
+
+    <p>World</p>
+</div>
+HTML;
+
+    $result = $middleware->apply($buffer);
+    expect($result)->toBe($expectedResult);
+});
