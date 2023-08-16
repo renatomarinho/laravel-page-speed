@@ -114,7 +114,7 @@ To disable the Laravel Tachyon service in your local environment and get readabl
 // config/laravel-tachyon.php
 
 //Set this field to false to disable the Laravel Tachyon service.
-'enable' => env('LARAVEL_TACHYON_ENABLE', true),
+'enable' => env('LARAVEL_TACHYON_ENABLED', true),
 ```
 ### Skip routes
 
