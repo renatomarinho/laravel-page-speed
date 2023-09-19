@@ -86,7 +86,6 @@ class CollapseWhitespace extends PageSpeed
     {
         foreach ($this->ignoreElements as $element) {
             $pattern = '/<[^>]*?data-tachyon-ignore[^>]*>(.*?)<\/[^>]*>|<' . $element . '[^>]*>(.*)<\/' . $element . '>/Uuis';
-            echo $pattern . PHP_EOL;
             if (preg_match_all($pattern, $buffer, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     $this->addSkippedElement($match[1]);

@@ -13,12 +13,12 @@ class ServiceProvider extends BaseServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected bool $defer = false;
 
     /**
      * Bootstrap the application events.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__ . '/../config/laravel-tachyon.php' => config_path('laravel-tachyon.php'),
@@ -28,7 +28,7 @@ class ServiceProvider extends BaseServiceProvider
     /**
      * Register the service provider.
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/laravel-tachyon.php', 'laravel-tachyon.php');
     }
