@@ -2,6 +2,11 @@
     <img width="400" src="https://raw.githubusercontent.com/renatomarinho/laravel-page-speed/master/art/logo.png" alt="Laravel Page Speed logo" />
 </p>
 
+
+**This is a temporary fork until Laravel 11 support is added to the original package. The original repository is well maintained & this package would be discarded once the support is added to the original one. So please don't use this unless utmost necessity.**
+
+
+
 <p align="center">
 <a href="https://travis-ci.org/renatomarinho/laravel-page-speed"><img src="https://travis-ci.org/renatomarinho/laravel-page-speed.svg?branch=master" alt="Build Status"></a>
 <a href="https://packagist.org/packages/renatomarinho/laravel-page-speed"><img src="https://poser.pugx.org/renatomarinho/laravel-page-speed/version" alt="Latest Stable Version"></a>
@@ -44,7 +49,7 @@ protected $middleware = [
     \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
-    //\RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class, 
+    //\RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
     //\RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
     \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
     \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
